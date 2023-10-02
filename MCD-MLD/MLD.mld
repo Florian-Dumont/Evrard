@@ -1,0 +1,30 @@
+%%mocodo
+:
+details: id, size, color
+:
+avoir: #id->product->id, _#id.1->details->id
+:
+product: id, label_1, label_2, description, url_image, price, sell_amount, #id.1->categories->id
+:
+categories: id, label, description, url_cat_image
+:
+
+
+:::::
+inclus: #id->orders->id, _#id.1->product->id, quantity, ref_product
+:::
+
+
+:::::
+orders: id, total_amount, order_date, #id.1->user->id
+:::
+
+
+:::
+adresse: id, adress_1, adress_2, city, country, postcode, phone, #id.1->user->id
+:::::
+
+
+:::::
+user: id, name, email, password, role, created_at
+:::

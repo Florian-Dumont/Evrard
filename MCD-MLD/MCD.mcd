@@ -1,0 +1,29 @@
+details: id, size, color
+avoir, 1N product, 1N details
+product:id, label_1, label_2, description, url_image, price, sell_amount
+contient, 01 product, 0N categories
+categories:id, label, description, url_cat_image
+
+:
+:
+inclus, 1N orders, 0N product : quantity, ref_product
+:
+:
+
+:
+:
+orders:id,total_amount, order_date
+:
+:
+
+:
+adresse :id, adress_1, adress_2, city, country, postcode, phone
+passe, 0N user, 11 orders
+:
+:
+
+:
+possede, 1N user, 11 adresse
+user: id, name, email, password, role, created_at
+:
+:

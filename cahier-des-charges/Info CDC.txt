@@ -1,0 +1,257 @@
+
+
+
+Nom de l'entreprise : En attente du dépôt de marque
+
+
+Nom du projet : En attente du dépôt de marque
+
+
+Personne à contacter dans l'entreprise : Evrard François
+
+
+Adresse : 91 bd jules vernes 44300 Nantes
+
+
+téléphone: 06-46-50-36-80
+
+
+email: Francoisevrard0@gmail.com
+
+1. Présentation de l'entreprise.
+
+xxx est une marque de maroquinerie éthique et 100% artisanale fabriqué en Bolivie
+
+Les créations de la marque sont entièrement artisanales et ce de A à Z.
+
+La marque se veut éthique et artisanale soucieuse du bien être et des conditions de vie de ses artisans.
+
+Elle est soucieuse de la reconnaissance du savoir-faire de ses artisans pour l’artisanat et notamment pour le travail du cuir 
+
+Elle cherche à contribuer à la valorisation et à la popularisation de ce savoir-faire bolivien
+
+xx a  un impact positif pour l'économie locale des villages de la région du Béni où sont fabriqués ses produits
+
+xxx favorise un circuit court.
+Pour les matières premières ainsi que pour la fabrication de ses produits.
+Tout se fait au sein de la région du béni la région de l’agriculture et de l'élevage en Bolivie. 
+Elle désire transmettre au travers de ses créations du bonheur, du bien être , de la joie ,du positif embellir la vie de ses clients tout en embellissant celle de ses artisans.
+
+La marque s'inscrit dans un modèle de slow consommation et cherche à contribuer au développement l'économie locale des villages de la région du Béni tout en valorisant le savoir faire bolivien
+
+la politique RSE:
+
+Soucieuse de ses colaborateur et fourniseur, soucieuse de ses client et de ses partenaire en générale.
+
+Marque ethique:
+
+    Soucieuse de l'impact environemental, de la consomation en générale.
+
+2. Présentation du projet
+
+    Les attentes:
+    xx souhaite vendre ses produit a travers un e-shop, une fois lancé, il souhaite a travers ce site , lancé sa marque et develloper sa marque, il sera sa vitrine principale.
+
+    le context du projet:
+
+    2.1 Comité de pilotage
+
+        indiquez les processus de validation 
+
+        Des point seront fait réguliérement entre l'équipe de devellopement et le client afin de valider le graphisme, l'ergonomie ainsi que le contenu du site.
+
+        Lors de ces point une verification des delais sera aussi vu.
+
+        Aucun contenu de base n'est disponible actuellement , libre choix au devellopeur d'y placer du contenu temporaire.
+        
+
+    2.2 Objects du site
+
+      
+
+        Le site aura comme premiére vocation d'etre un site de type e-shop. Il comportera un support de communication via newsletter qui sera mis en place une fois l'entreprise phisique crée.
+       
+
+         
+
+        Les resultats attendu sont :
+
+            - Développement des ventes , du flux visiteur ainsi que du flux clients.
+            - Developpement des réseaux sociaux associés a l'entreprise.
+            - Développement du référencement de la marque ainsi que de son image numérique et physique
+
+        
+
+    2.3 A qui s'adresse le site - Les cibles
+       
+
+        la stratégie des cible defini par la marque repose sur des profils adulte , familliale, homme, femme entre 20 et 50ans de type CSP, CSP ++. Des profils déjâ sensibilisé a la slow consomation ainsi que aux marques ethiques.
+           
+
+    2.4 Arborescence - Plan du site    
+
+                Schéma et explication disponible en annexe 1  
+
+    2.5 contenus
+        Aucun contenu actuellement disponible , s'agissant d'une création d'entreprise, libre choix au developpeur de placer du contenu temporaire. 
+            
+
+    2.6 Fonctionnalités       
+
+       Les fonctionalité principale qui devront etre impérativement présente a la livraison seront :
+
+        -Généralité :
+
+            Les element suivant resteront afficher peut importe la page en cours de visionnages 
+
+            -En haut a gauche de la page la possibilité de choisir sa langue , Français ou anglais dans un premier temps.
+           
+            -Au centre du haut de la page, le logo et le slogan de la marque
+           
+            -A droite  un bouton se connecté qui renvoit vers un formulaire de connection avec Prénom , Nom, adresse mail et mot de passe en champ.Ce bouton se connecté se transformera en bouton panier une fois l'utilisateur connecté.
+
+            -En dessous de ce block, une bar de navigation comportant des lien vers les pages "boutique", "notre histoire" et "la fabrication".
+
+            -En bas de la page , classé en collones les lien suivant : Catégories , Ceintures, Porte-feuilles , la marque, la fabrication, notre histoire, lien utiles, CGV, Contact.
+
+        -Fonctionalité essentiel : 
+            - Conformité avec le niveau d'accesibilité AA   
+
+            - Prise en compte des droits RGPD des usagers (interface du côté de l’usager permettant d’avoir 
+            accès aux données, de les télécharger, de les modifier, et de les supprimer) 
+
+            -Cases de consentement et pages de mentions d’information RGPD à prévoir lors de la création du compte.
+
+
+
+        - Un pannel admin perméttant :
+             -la personalisation complete des catégorie ainsi que des produit( ajout, edition, supprésion)
+
+             - Un onglet commandes parmettant l'affichage de la liste des commande en cours.
+
+             - Un onglet inventaire permettant l'affichage du stock de tout les produit
+
+             -Un onglet stats permettant l'affichage de statistique tel que le produit le plus vendu, le total de vente globale par produit, l'affichage du total de vente afficher en euros.   
+
+
+    2.7 Langues
+
+        En premier lieu, Français et Anglais devront etre disponible. Puis par la suite , en fonction du developpement de la marque, le Russe ainsi que le Mandarin seront envisagé.
+    
+
+3.Présentation attendus   
+
+    3.1 Charte graphique et charte editoriale
+
+        Une charte graphique sobre et luxe est attendus, sinon libre choix eu developpeur. 
+
+    3.2 créations et récupération de contenus.
+
+        Aucun contenu disponible, libre choix au developpeur de mettre du contenu temporaire.
+
+    3.3 Developpement
+        
+
+        S'agissant d'une boutique en ligne , la récupération des catégoris, produit, fiche client ainsi que des statistiques se fera via des éléments qui feront appel a des bases de données.      
+
+         
+
+    3.4 Dépot du nom de domaine et adresse mail.
+
+        L'entreprise etant en création, le nom de domaine ainsi que le dépot de la marque sera fait en meme temps avec les conseil et la colaboration du developpeur.
+
+    3.5 Hebergement 
+        
+        L'entreprise est ouvert au proposition de solution d'hebergement. 
+
+    3.6 Mises a jour
+        
+
+        Un contract de maintenance est prévu auprés du developpeur.
+
+    3.7 Statistique de connections
+
+        Un onglet dispnible dans le panneaux administrateur sera prévu afin de suivre différente statistique. 
+
+
+
+4 Planning prévisionnel
+
+    Suite a la définition des attente du projet, nous avons mis en place un rétro-planning fait avec le logiciel Exel.
+
+    Annexe 2 
+
+
+
+5. La sécurité et la cofnidentialité
+
+    Elle doit être maximum avec un login et un mot de passe utilisateur et administrateur.     
+    . Le prestataire devra être précis dans sa réponse sur le 
+    niveau de :
+    -Sécurité des accès par des roles 
+    -la protection des formulaires contre les injections de code, notamment le SQL.
+    -Le contrôle de saisi des champs des formulaires pour que la saisi de l’utilisateur corresponde au format attendu :
+    respect du format des adresses mail avec le @
+    -Hashage des mots de passe et contrôle des normes de mots de passe, majuscule, chiffres et caractères spéciaux, longueur de mot de passe.
+    -La vérification du contenu des images uploadées	
+    -Confidentialité des données contenus et des données personnelles
+    -Adaptation du support technique au service fourni, garantie contractuelle de service, temps de 
+    retour en condition opérationnelle, temps de retour à la normale ...    
+    -Hébergement en europe de la solution, performance en termes de connexions simultanées, taux 
+    de disponibilité des serveurs, CDN... 
+    -Garantie sur la perte des données, solution de « back-up » et rythme de la sauvegarde
+    -Condition contractuelle de la maintenance corrective, évolutive et des améliorations de service.
+    -Qualité de service et les délais d’intervention.
+
+
+6. Les outils collaboratif
+
+    Les echange avec l'equipe de developpement et l'entreprise se feront par mails.
+    En interne, les enchanges se feront via un Google Drive, Discord et GitHub.
+
+7. Les contrainte Techniques.
+    Le site web devra etre develloper avec les technologie suivantes : React, NodeJs et MySQl.
+    
+8. Les précautions mise en oeuvre pour l'eco-conception.
+
+    - Valider les pages auprés de W3C
+    - Optimisation du chargement du CSS (css-module)
+    - Favoriser les polices standards
+    - Limité le nombre de requete SQl necessaire.
+    - Priviligie une approche mobile first
+    - Proposer un traitement asyncrhone lorsque c'est possible.
+
+
+9. L'équipe mise en oeuvre.
+
+    L'equipe mise en oeuvre pour ce projet sera composé de 3 collaborateur, chaq'un d'eux affecté a des partie bien précise : intégration / developpeur front, developpement back, css.
+
+
+10. Les contraintes non techniques
+    
+        Le temps, date de lancement prévu pour été 2024. 
+
+11. Le budget   
+
+    Minimisation maximale des coûts superflus.    
+
+
+
+ANNEXE 1 - schéma de la structure du projet
+
+
+    1.1 - La Homepage ou Landing page
+        Retrouvez ici un schéma de la page d'arrivé d'un utilisateur.
+        Celle-ci affichera 4 produit populaire suivie d'un bandeaux notifiant du payment sécurisé, modalité d'expédition , modalité de livraison.
+        En dernier , un ou plusieur affichage de nos reseaux sociaux.
+
+
+    1.2 - Affichages des catégories de produit.
+        Retrouvez ici un scéma de la page catégorie de produit, au clic sur l'un des catégories, celle ci renvois vers un catalogue de produit en relation avec la catégorie. Exemple : catégorie ceinture permet d'afficher toute les ceinture disponible sur le site.
+
+    1.3 - Affichage des produit.
+        Au clic du produit dans son catalogue, les produit s'afficheront sur une page avec une photo ou plusieur photo, le titre du produit,  son prix , une description, le choix d'une ou plusieur couleur, un boutton pour ajouter au panier.
+
+ANNEXE 2 - Rétro-planning
+
+    (fin)
