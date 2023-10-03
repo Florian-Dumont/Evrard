@@ -33,7 +33,7 @@ function Boutique(){
                 
                     {!categories ? (<p>Loading..</p>) : ( categories.map((category)=>(
                         <div key ={category.id}>
-                            <Link to={`${category.label}`}>
+                            <Link to={`${category.label + "/" + category.id}`}>
                             <p>{category.label}</p>
                             <img src={"img/" + category.url_cat_image} alt="" />
                             <p>{category.description}</p>

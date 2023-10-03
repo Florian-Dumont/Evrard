@@ -14,7 +14,7 @@ const getAvgProduct = async (req,res)=>{
 }
 
 const getProductByCategories = async (req,res)=>{
-        const query = "SELECT * from product INNER JOIN products_details ON product.id = products_details.product_id INNER JOIN details ON details.id= products_details.details_id"
+        const query = "SELECT * from product INNER JOIN products_details ON product.id = products_details.product_id INNER JOIN details ON details.id= products_details.details_id INNER JOIN categories ON product.categories_id = categories.id WHERE product.categories_id = categories.id "
         const [datas] = await Query.find(query)
         res.status(200).json({datas})
 }

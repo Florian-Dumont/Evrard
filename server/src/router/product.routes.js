@@ -5,6 +5,6 @@ const router  = Router();
 
 router.get("/categories", getCategories);
 router.get("/average",getAvgProduct);
-router.get("/listing",getProductByCategories);
+router.get("/:label/:id",getProductByCategories);
 
 export default router;

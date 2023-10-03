@@ -1,66 +1,52 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-function ProductByCategories(){
+function ProductByCategories() {
+    const [productByCategories, setProductByCategories] = useState([]);
+    const [categories, setCategories] = useState([]);
+    const params = useParams()
 
-    const [productByCategories, setproductByCategories] = useState(null)
-    const [categories, setCategories] = useState(null)
-    
-    useEffect(()=>{    
-        async function getCategories(){
-            try{  
-                const categoryResult = await (
-                    await fetch("api/v1/product/categories")
-                ).json()
-                console.log(categoryResult)
-                setCategories(categoryResult.datas)  
-    
-            }catch(error){
-                console.log(error)
-            }
-    
-        }
-        getCategories();
-    },[])
-
-    
-    useEffect(()=>{
-        async function getProductByCategories(){
+    useEffect(() => {
+        async function fetchData() {
             try {
-                const ProductByCategoriesResult = await (
-                    await fetch("/api/v1/product/listing")
-                ).json()
-                //console.log(ProductByCategoriesResult)
-                setproductByCategories(ProductByCategoriesResult.datas)
+                const categoriesData = await ( await fetch("/api/v1/product/categories")).json();                  
+                setCategories(categoriesData.datas);
+                
+                 const productsData = await ( await fetch("/api/v1/product/" + params.label + "/" + params.id)).json();                 
+                setProductByCategories(productsData.datas);
+
+                console.log("Product By Categories:", productsData.datas);
+                console.log("Categories:", categoriesData.datas);
+                
             } catch (error) {
-                console.log(error)
+                console.error(error);
             }
         }
-        getProductByCategories();
-    },[]);
 
-    return(
-        <>
+        fetchData();
+    }, []);
+
+    return (
         <section>
-            {!productByCategories ? (
-                <p>Loading..</p>
-            ):(
+            {!productByCategories.length || !categories.length ? (
+                <p>Loading...</p>
+            ) : (
                 <>
-                    {productByCategories.filter((product)=> product.categories_id === categories.id).map((product)=>(
-                        <div key = {productByCategories.id}>
-                            <Link to={`${product.label_1}`}>
-                                <img src={"img/" + product.url_image} alt="" />
-                                <h2>{product.label_1}</h2>
-                                <p>{product.price}</p>
-                            </Link>    
-                        </div>
+                    {productByCategories.map( product => product.category_id === params.id (
+                    <div key={product.id}>
+                        <Link to={product.label_1}>
+                            <img src={"img/" + product.url_image} alt="" />
+                            <h2>{product.label_1}</h2>
+                            <p>{product.price}</p>
+                        </Link>
+                    </div>
                     ))}
+
                 </>
             )}
         </section>
-        </>
-    )
-
+    );
 }
-export default ProductByCategories;
 
+export default ProductByCategories;
