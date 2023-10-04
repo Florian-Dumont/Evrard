@@ -6,6 +6,7 @@ import Boutique from "./Components/pages/Boutique/index";
 import About from "./Components/pages/Histoire";
 import Manufacturing from "./Components/pages/Fabrication";
 import ProductByCategories from "./Components/pages/Product";
+import Details from "./Components/pages/Details";
 
 
 
@@ -20,6 +21,7 @@ function App() {
           <Route path = "/boutique/:label/:id" element= {<ProductByCategories/>} />
           <Route path = "/Histoire" element = {<About/>}/>
           <Route path = "/Fabrication" element = {<Manufacturing/>}/>
+          <Route path = "boutique/:label/:id/:label_1" element = {<Details/>}/>
         </Routes>
       <Footer/>
     </>

@@ -18,4 +18,9 @@ const getProductByCategories = async (req,res)=>{
         const [datas] = await Query.find(query)
         res.status(200).json({datas})
 }
-export {getCategories,getAvgProduct,getProductByCategories};
+const getByValues = async (req,res) =>{
+    const query = "SELECT * from product INNER JOIN products_details ON product.id = products_details.product_id INNER JOIN details ON details.id = products_details.details_id WHERE product.label_1 = ?"
+    const [datas] = await Query.findByDatas(query, req.params)
+    res.status(200).json({datas})
+}
+export {getCategories,getAvgProduct,getProductByCategories,getByValues};
