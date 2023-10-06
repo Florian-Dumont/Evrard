@@ -7,7 +7,10 @@ import About from "./Components/pages/Histoire";
 import Manufacturing from "./Components/pages/Fabrication";
 import ProductByCategories from "./Components/pages/Product";
 import Details from "./Components/pages/Details";
-
+import Signin from "./Components/pages/user/Signin";
+import Signup from "./Components/pages/user/Signup";
+import Signout from "./Components/pages/user/Signout";
+import HOC from "./Components/HOC";
 
 
 
@@ -16,12 +19,18 @@ function App() {
     <>
       <Header/>
         <Routes>
-          <Route path ="/" element = {<Home/>}/>
-          <Route path = "/boutique" element= {<Boutique/>} />
-          <Route path = "/boutique/:label/:id" element= {<ProductByCategories/>} />
-          <Route path = "/Histoire" element = {<About/>}/>
-          <Route path = "/Fabrication" element = {<Manufacturing/>}/>
-          <Route path = "boutique/:label/:id/:label_1" element = {<Details/>}/>
+          <Route path ="/" element = {<HOC child = {Home}/>}/>
+          <Route path = "/boutique" element= {<HOC child = {Boutique}/>} />
+          <Route path = "/boutique/:label/:id" element= {<HOC child = {ProductByCategories}/>} />
+          <Route path = "/Histoire" element = {<HOC child = {About}/>}/>
+          <Route path = "/Fabrication" element = {<HOC child = {Manufacturing}/>}/>
+          <Route path = "boutique/:label/:id/:label_1" element = {<HOC child = {Details}/>}/>
+          <Route path ="/utilisateur">
+            <Route path="connexion" element = {<HOC child = {Signin}/>}/>
+            <Route path="creer-un-compte" element={<HOC child = {Signup}/>} />
+            <Route path = "deconnexion" element ={<HOC child = {Signout}/>} />
+
+          </Route>
         </Routes>
       <Footer/>
     </>

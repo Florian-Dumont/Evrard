@@ -18,7 +18,11 @@ function Header(){
                     <p>Slogan</p>   
                 </div>
                 <div>
-                    <p>connexion</p>
+                {!info.isLogged ?
+                    <NavLink to ={"/utilisateur/connexion"}> Se connecter</NavLink>
+                    :
+                    <NavLink to={"utilisateur/deconnexion"}>Déconnexion</NavLink>
+                }   
                 </div>
                 <nav>
                     <NavLink to = {"/boutique"} >Boutique</NavLink>

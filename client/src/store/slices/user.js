@@ -18,7 +18,7 @@ export const userSlice = createSlice({
                 isLogged: false,
                 id:""
             };
-            localStorage.removeItem("auth")
+            
         }
     }
 });
