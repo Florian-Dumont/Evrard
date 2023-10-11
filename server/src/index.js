@@ -13,10 +13,6 @@ const app = express();
     .use(router)
 
 
-app.get("/api/v1/product/all", (req, res) => {
 
-   
-
-});
 
 app.listen(9000, () => console.log("running on http://localhost:9000"));

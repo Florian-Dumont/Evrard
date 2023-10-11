@@ -11,8 +11,8 @@ router.get("/", home_routes)
 router.use("/api/v1/product", product_routes )
 router.use("/api/v1/user", user_routes)
 
-router.get("*", (req,res) =>{
-    res.status(404).json({msg:"404 not found"})
-})
+// router.get("*", (req,res) =>{
+//     res.status(404).json({msg:"404 not found"})
+// })
 
 export default router;
