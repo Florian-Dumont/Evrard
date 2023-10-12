@@ -11,7 +11,7 @@ export const userSlice = createSlice({
     initialState,
     reducers:{
         signin:(state,action)=>{
-            state.info = {isLogged: true, id:action.payload.label};
+            state.info = {isLogged: true, id:action.payload.name};
         },
         signout:(state,action)=>{
             state.info = {

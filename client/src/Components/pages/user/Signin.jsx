@@ -55,7 +55,7 @@ function FormIn(){
                     value={password} onChange={(e) => setPassword(e.target.value)}
                 />
                 <button type="submit">
-                    Se connecté                    
+                    Se connecter                    
                 </button>                
             </form>
             <Link to ={"/utilisateur/creer-un-compte"} >Pas de compte ? crée en un !</Link>

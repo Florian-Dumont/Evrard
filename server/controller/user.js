@@ -26,16 +26,20 @@ const signin = async (req,res) => {
         const [user] = await Query.findByDatas(query, datas);
 
         if(user.length){ // verif si les info sont présente en bdd
+            console.log("utilisateur trouvé")
             msg = "Utilisateur ok"
-            const TOKEN = sign({label:user[0].name},SK);
+            const TOKEN = sign({name:user[0].name},SK);
             res.status(200).json({msg, TOKEN});    
         }else if(!user.length){ // si pas présente
+            console.log("utilisateur NON trouvé")
             msg = "Erreur identifiant ou mot de passe";
             res.status(409).json({msg})
         }
 
     } catch (error) {
+        console.log("erreur")
         throw Error(error)
+        
     }
 }
 
