@@ -32,9 +32,9 @@ function Boutique(){
             <section>
                 
                     {!categories ? (<p>Loading..</p>) : ( categories.map((category)=>(
-                        <div key ={category.id}>
+                        <div className="cat-ctn"key ={category.id}>
                             <Link to={`${category.label + "/" + category.id}`}>
-                            <p>{category.label}</p>
+                            <h2>{category.label}</h2>
                             <img src={"img/" + category.url_cat_image} alt="" />
                             <p>{category.description}</p>
                             </Link>

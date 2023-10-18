@@ -62,11 +62,14 @@ function FormIn(){
                     name="password"
                     value={password} onChange={(e) => setPassword(e.target.value)}
                 />
-                <button type="submit">
+                   <button type="submit">
                     Se connecter                    
-                </button>                
+                </button>
+                <div>
+                <Link className='linktoup' to ={"/utilisateur/creer-un-compte"} >Pas de compte ? crée en un !</Link>
+                </div>
             </form>
-            <Link to ={"/utilisateur/creer-un-compte"} >Pas de compte ? crée en un !</Link>
+            
 
             {msg &&<p>{msg}</p>}
 </>

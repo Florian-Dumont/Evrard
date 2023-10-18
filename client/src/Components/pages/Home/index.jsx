@@ -24,14 +24,14 @@ return(
     <>
         <main>
             <section>
-           <h2>Home soon</h2>
+           <h2 className="home-title">Nos meillieurs ventes</h2>
            <div>
             {!avgProduct ? (
                 <p>Loading..</p>
             ) : (avgProduct.map((avgPro)=>(
-                <div key ={avgProduct.id}>
-                    <h2>{avgPro.label_1}</h2>
-                    <img src={"img/" + avgPro.url_image} alt="" />
+                <div className="pro-ctn" key ={avgProduct.id}>
+                    <h2 className="pro-label">{avgPro.label_1}</h2>
+                    <img  className="pro-img" src={"img/" + avgPro.url_image} alt="" />
                     <p>{avgPro.description}</p>
                 </div>
             )))}

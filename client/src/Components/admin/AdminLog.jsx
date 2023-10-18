@@ -41,7 +41,7 @@ function FormIn(){
     }    
     return(
 <>
-        <h1>Zone admin</h1>
+        <h1 className='adminHome-ttl'>Zone admin</h1>
         <form onSubmit={handleSubmit}> {/*formulaire de connexion*/}
             
 

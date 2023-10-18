@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from "react";
-
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import { faHouse } from "@fortawesome/free-solid-svg-icons"
 import AdArticles from "./AdArticles"
 import AdCommandes from "./AdCommandes";
 import AdInventaire from "./AdInventaire";
@@ -32,8 +34,9 @@ import AdStats from "./AdStats"
 
     return(
         <>
-            <div>
-                <h1>Pannel admin</h1>
+            <div className="admin-ctn">
+                <h1 className="admin-ttle">Pannel admin</h1>
+                <p><Link to ="/"><FontAwesomeIcon icon={faHouse} /></Link></p>
                 <div>
                     
                     <button onClick = {() => setSelectedTab("articles")}>Gestion des produits</button>

@@ -1,3 +1,193 @@
-img {
-    width :200px;
+header {
+  display: flex;
+  width: 100%;
+  text-decoration: none;
+  text-align: center;
+  justify-content: center;
 }
+header .lang {
+  display: block;
+  width: 3vw;
+}
+header .lang p {
+  height: 1px;
+  position: relative;
+  padding-top: 0.5em;
+  top: -0.8em;
+  left: 1.5em;
+  font-size: 0.8em;
+}
+header .headerLogoSlogan {
+  text-align: center;
+  display: block;
+  width: 30%;
+  margin: auto;
+  position: relative;
+  left: 4em;
+}
+header .headerLogoSlogan .headerLogo {
+  padding-top: 2em;
+  width: 5em;
+}
+header .logbtn {
+  color: black;
+  text-decoration-line: none;
+  font-size: 0.8em;
+  width: 100%;
+  position: relative;
+  left: 6em;
+  margin-right: 0.5em;
+  border: 0.5px solid black;
+  padding: 0.2em;
+  border-radius: 20px;
+}
+header .logname {
+  position: relative;
+  left: 4.5em;
+}
+header .cart-btn {
+  display: flex;
+  position: relative;
+  top: 4.8em;
+  left: 1.5em;
+  width: auto;
+  text-align: center;
+  justify-content: center;
+  height: 2em;
+}
+header .cart-btn p {
+  position: relative;
+  top: 0.3em;
+  right: 2.2em;
+}
+
+nav {
+  display: block;
+  width: 90%;
+  margin-top: 0.5em;
+  text-align: center;
+  position: relative;
+  justify-content: space-between;
+  left: 1em;
+}
+nav a {
+  text-decoration-line: none;
+  justify-content: space-between;
+  font-size: 0.9em;
+  color: brown;
+}
+
+.burger-icon {
+  display: flex;
+  padding-top: 0.5em;
+  position: relative;
+  left: 90%;
+}
+
+footer {
+  margin-top: 2em;
+  display: flex;
+  width: 100vw;
+  text-align: center;
+  justify-content: space-around;
+  font-size: 0.8em;
+  position: relative;
+  right: 0.6em;
+  border-top: 1px solid black;
+}
+footer a {
+  text-decoration: none;
+}
+
+section .home-title {
+  border-top: 1px solid black;
+  padding-top: 0.5em;
+  text-align: center;
+  font-size: 1.5em;
+}
+section .pro-ctn {
+  text-align: center;
+  margin-bottom: 2em;
+}
+section .pro-ctn .pro-label {
+  margin-top: 1em;
+  font-size: 1em;
+}
+section .pro-ctn .pro-img {
+  width: 200px;
+  height: auto;
+  text-align: center;
+}
+section .pro-ctn p {
+  text-align: center;
+  padding: 0.5em;
+  font-size: 0.8em;
+}
+
+.cat-ctn {
+  text-align: center;
+  margin-bottom: 2em;
+}
+.cat-ctn img {
+  margin-top: 1em;
+  width: 200px;
+}
+.cat-ctn h2 {
+  padding-top: 2em;
+  border-top: 1px solid black;
+  font-size: 1.3em;
+}
+.cat-ctn p {
+  margin: 2em;
+  font-size: 0.8em;
+}
+.cat-ctn a {
+  text-decoration-line: none;
+}
+
+form {
+  border-top: 1px solid black;
+  padding-top: 0.5em;
+  text-align: center;
+  display: block;
+  width: auto;
+  padding-bottom: 1em;
+  margin: auto;
+  width: 80%;
+}
+form input {
+  margin: 0.4em;
+}
+form button {
+  margin-top: 0.5em;
+}
+
+.linktoup {
+  margin-top: 3em;
+  font-size: 0.7em;
+  position: relative;
+}
+
+.adminHome-ttl {
+  margin: auto;
+  text-align: center;
+}
+
+.admin-ctn {
+  text-align: center;
+  width: 100%;
+}
+.admin-ctn .admin-ttle {
+  color: red;
+}
+.admin-ctn a {
+  text-decoration: none;
+  font-size: small;
+}
+.admin-ctn button {
+  margin: 0.1em;
+}
+.admin-ctn button:focus {
+  background-color: gold;
+  color: red;
+}/*# sourceMappingURL=App.css.map */

@@ -30,11 +30,8 @@ function FormUp(){
     }    
     return(
 <>
-        <form onSubmit={handleSubmit}> {/*formulaire de connexion/création*/}
-             {/* !!!!!!!!!!!!!!!!!!!!!! 
-                Ne pas oublier de sécurisé (HTMLspécialchars)
-             !!!!!!!!!!!!!!!!!!
-             */}
+        <form onSubmit={handleSubmit}> {/*formulaire de création*/}
+             
 
                 <input
                     type="text"
@@ -56,9 +53,11 @@ function FormUp(){
                 />
                 <button type="submit">
                     S'inscrire                    
-                </button>                
+                </button> 
+                <div>
+                <Link className='linktoup' to ={"/utilisateur/connexion"} >Déja un compte ? connectez-vous</Link>
+                </div>
             </form>
-            <Link to ={"/utilisateur/connexion"} >Déja un compte ? connectez-vous</Link>
 
             {msg &&<p>{msg}</p>}
 </>
