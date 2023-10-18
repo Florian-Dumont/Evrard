@@ -4,8 +4,9 @@ const initialState = {
     info : {
         isLogged: false,
         id: "Jhon Doe",
-    }
-}
+        
+    },
+};
 export const userSlice = createSlice({
     name:"user",
     initialState,

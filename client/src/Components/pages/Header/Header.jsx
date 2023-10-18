@@ -4,7 +4,8 @@ import React from "react";
 
 function Header(){
 
-    const {info} = useSelector(state =>state.user)
+    const {info} = useSelector((state) =>state.user)
+    console.log(info)
 
     return(
         <>
@@ -18,11 +19,12 @@ function Header(){
                     <p>Slogan</p>   
                 </div>
                 <div>
-                {!info.isLogged ?
+                {!info.isLogged ?(
+                    
                     <NavLink to ={"/utilisateur/connexion"}> Se connecter</NavLink>
-                    :
+                ):(
                     <NavLink to={"utilisateur/deconnexion"}>Déconnexion</NavLink>
-                }   
+                )}   
                 </div>
                 <nav>
                     <NavLink to = {"/boutique"} >Boutique</NavLink>

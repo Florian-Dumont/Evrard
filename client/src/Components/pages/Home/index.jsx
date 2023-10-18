@@ -29,11 +29,11 @@ return(
             {!avgProduct ? (
                 <p>Loading..</p>
             ) : (avgProduct.map((avgPro)=>(
-                <>
-                <h2>{avgPro.label_1}</h2>
-                <img src={"img/" + avgPro.url_image} alt="" />
-                <p>{avgPro.description}</p>
-                </>
+                <div key ={avgProduct.id}>
+                    <h2>{avgPro.label_1}</h2>
+                    <img src={"img/" + avgPro.url_image} alt="" />
+                    <p>{avgPro.description}</p>
+                </div>
             )))}
            </div>
            </section>
@@ -46,3 +46,6 @@ return(
     
 }
 export default Home
+
+
+//  Warning: Each child in a list should have a unique "key" prop.

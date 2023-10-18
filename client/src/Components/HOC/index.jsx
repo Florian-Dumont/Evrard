@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 
 import { setTitle } from "./setTitle";
 import { signout } from "../../store/slices/user";
+import Header from "../pages/Header/Header";
 
 function HOC({ child, auth }) {
     const { pathname } = useLocation();
@@ -50,7 +51,13 @@ function HOC({ child, auth }) {
         checkAuth();
     }, [auth]);
 
-    return <>{(!auth || (auth && tokenIsValid)) && <Child />}</>;
+    return (
+        <>
+
+        {(!auth || (auth && tokenIsValid)) && <Header />}
+        {(!auth || (auth && tokenIsValid)) && <Child />}
+       </>
+    );
 }
 
 export default HOC;

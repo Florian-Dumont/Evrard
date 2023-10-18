@@ -1,8 +1,33 @@
-import React from "react";
+import React, {useState} from "react";
+import { signout } from "../../../store/slices/user"
+import { useDispatch } from "react-redux"
+import {useNavigate} from "react-router-dom"
+import { Link } from "react-router-dom";
+
+
+
 
 function Signout(){
+
+    const dispatch = useDispatch();
+    const [name, setName] = useState("");
+    const navigate = useNavigate("")
+
+    
+    dispatch(signout({name}))
+
+    function back(){
+        localStorage.removeItem("auth")
+        setTimeout(()=>{
+            navigate("/")
+        },5000)
+        
+    }
+    back();
+    
+
     return(
-        <div>Deconexion</div>
+       <p>Vous etes déconnecté, retour a <Link to ="/">l'acceuil</Link></p>
     )
 }
 

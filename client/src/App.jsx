@@ -16,13 +16,14 @@ import AdArticles from "./Components/admin/AdHome/AdArticles"
 import AdCommandes from "./Components/admin/AdHome/AdCommandes";
 import AdInventaire from "./Components/admin/AdHome/AdInventaire";
 import AdStats from "./Components/admin/AdHome/AdStats"
+ import AdminLog from "./Components/admin/AdminLog.jsx"
 
 
 
 function App() {
   return (
     <>
-      <Header/>
+      
         <Routes>
           <Route path ="/" element = {<HOC child = {Home}/>}/>
           <Route path = "/boutique" element= {<HOC child = {Boutique}/>} />
@@ -32,12 +33,13 @@ function App() {
           <Route path = "boutique/:label/:id/:label_1" element = {<HOC child = {Details}/>}/>
 
           <Route path ="utilisateur">
-            <Route path="connexion" element = {<Signin/>} />
-            <Route path="creer-un-compte" element= {<Signup/>} />
-            <Route path = "deconnexion" element ={<HOC child = {Signout}/>} />
+            <Route path="connexion" element = {<HOC child = {Signin}  />  } />
+            <Route path="creer-un-compte" element= {<HOC child = {Signup}  /> }/>
+            <Route path = "deconnexion" element ={<HOC child = {Signout}  />} />
           </Route>
 
-          <Route path ="admin" element = {<AdHome/>}>
+           <Route path ="admin" element = {<AdminLog/>} />
+          <Route path ="admin/true" element = {<AdHome/>}>
             <Route path = "articles" element = {<AdArticles/>} />
             <Route path = "commandes" element = {<AdCommandes/>} />
             <Route path = "inventaire" element ={<AdInventaire/>} />

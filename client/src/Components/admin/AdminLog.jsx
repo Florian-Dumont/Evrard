@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {useNavigate} from "react-router-dom"
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux"
-import { signin } from "../../../store/slices/user"
+import { signin } from "../../store/slices/user"
 
 
 function FormIn(){
@@ -21,19 +21,19 @@ function FormIn(){
     async function handleSubmit(e){
         e.preventDefault();
 
-        const res = await fetch("/api/v1/user/signin" , {
+        const res = await fetch("/api/v1/user/adminlog" , {
             method: "post",
             headers: {"Content-Type" : "application/json"},
             body: JSON.stringify({name, email, password}),
         })
         const json = await res.json();
         setMsg(json.msg);
-        if(res.status === 200){
+        if(res.status === 200 ){
             localStorage.setItem("auth",json.TOKEN)
             dispatch(signin({name}))
-            navigate("/");
+            navigate("/admin/true");
         }
-        if(res.status === 201){
+        if(res.status === 401){
             navigate("/utilisateur/connexion")
         }
         
@@ -41,15 +41,11 @@ function FormIn(){
     }    
     return(
 <>
+        <h1>Zone admin</h1>
         <form onSubmit={handleSubmit}> {/*formulaire de connexion*/}
             
 
-                <input
-                    type="text"
-                    placeholder = "Votre nom"
-                    name ="name" 
-                    value = {name} onChange = {(e) => setName(e.target.value)}
-                />
+                
                 <input 
                     type="email"
                     placeholder ="Votre email" 
@@ -66,7 +62,7 @@ function FormIn(){
                     Se connecter                    
                 </button>                
             </form>
-            <Link to ={"/utilisateur/creer-un-compte"} >Pas de compte ? crée en un !</Link>
+            
 
             {msg &&<p>{msg}</p>}
 </>

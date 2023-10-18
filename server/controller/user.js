@@ -1,6 +1,7 @@
 import { hash } from "bcrypt";
 import Query from "../model/Query.js";
 import jsonwebtoken from "jsonwebtoken";
+import bcrypt from "bcrypt"
 
 const {SK} = process.env;
 const SALT = 10;
@@ -21,19 +22,31 @@ const check_token = async (req,res) => {
 const signin = async (req,res) => {
     try {
         let msg = "";
-        const datas = {name : req.body.name, email: req.body.email}; 
-        const query = "SELECT * FROM user WHERE name= ? AND email = ?"
+        const datas = {name : req.body.name, email: req.body.email, }; 
+        const query = "SELECT * FROM user WHERE name= ? AND email = ? "
         const [user] = await Query.findByDatas(query, datas);
+        
 
         if(user.length){ // verif si les info sont présente en bdd
             console.log("utilisateur trouvé")
             msg = "Utilisateur ok"
-            const TOKEN = sign({name:user[0].name},SK);
-            res.status(200).json({msg, TOKEN});    
-        }else if(!user.length){ // si pas présente
+            
+            const matchPassword = await bcrypt.compare(req.body.password, user[0].password)
+            
+            if(matchPassword){
+                const TOKEN = sign({name:user[0].name},SK);
+                
+
+            res.status(200).json({msg, TOKEN}); 
+            }else{
+                msg = "Erreur X"
+                res.status(401).json({msg})
+            }
+               
+        }else { // si pas présente
             console.log("utilisateur NON trouvé")
             msg = "Erreur identifiant ou mot de passe";
-            res.status(409).json({msg})
+            res.status(401).json({msg})
         }
 
     } catch (error) {
@@ -74,5 +87,38 @@ const createAccount = async ( req,res) => {
     }
 }
 
+const adminLog = async (req, res) =>{
+    try {
+        let msg =""
+        const datas = {email : req.body.email}
+        const query = "SELECT name , email, password, role FROM user WHERE email = ? AND role = 3"
+        const [user] = await Query.findByDatas(query, datas)
+        console.log(user)
 
-export {check_token,signin,createAccount}
+        if(user.length){
+            console.log("admin ok")
+            const matchPassword = await bcrypt.compare(req.body.password, user[0].password)
+
+            if(matchPassword){
+                const TOKEN = sign({name:user[0].name},SK);               
+            res.status(200).json({msg, TOKEN}); 
+            
+            }else{
+                msg = "Erreur X"
+                res.status(401).json({msg})
+            }
+               
+        }else { // si pas présente
+            console.log("utilisateur NON trouvé")
+            msg = "Erreur identifiant ou mot de passe";
+            res.status(401).json({msg})
+        }       
+        
+
+    } catch (error) {
+        throw Error (error)
+    }
+}
+
+
+export {check_token,signin,createAccount,adminLog}
