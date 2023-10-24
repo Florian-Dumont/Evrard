@@ -1,0 +1,45 @@
+.details-card{
+    display: flex;  
+    margin-top:2em;
+    margin-left:2em;  
+    img{        
+        width:150px;
+    }
+    .details-childimg{
+        display:flex;            
+        img{
+            position:relative;
+            right:0.4em;
+            width:50px;            
+            margin-right:0.5em;
+            margin-top: -0.5em;
+        }
+    }
+    .details-name{
+        margin-top:1em;               
+        display:block;
+        text-align: center;
+        
+    }
+    .details-descr{
+       margin:auto;
+       padding-right: 1em;
+       
+    }
+    .details-color{   
+        width:100px;                    
+        text-align: center;        
+        margin:auto;
+        .wrap{            
+            overflow-wrap: break-word;
+            height:fit-content;                     
+            
+        }
+    }
+    button{ 
+        margin-top: 0.5em;
+        margin-left:0.2em;
+        height:3em;      
+        font-size: 0.7em;
+    }
+}

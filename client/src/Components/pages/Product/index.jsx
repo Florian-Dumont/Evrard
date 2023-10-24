@@ -33,11 +33,13 @@ function ProductByCategories() {
                 <>
                 
                     {productByCategories.map( product => product.categories_id === parseInt(params.id) && (
-                    <div key={product.label_1}>
+                    <div className="product-ctn" key={product.label_1}>
                         <Link to={`${product.label_1} `}>
                             <h2>{product.label_1}</h2>
-                        <img src={"/img/" + product.url_image} alt=""  />                            
-                            <p>{product.price}</p>
+                        <img src={"/img/" + product.url_image} alt=""  />  
+                        <div>                         
+                            <p>{product.price} €</p>
+                        </div> 
                         </Link>
                     </div>
                     ))}

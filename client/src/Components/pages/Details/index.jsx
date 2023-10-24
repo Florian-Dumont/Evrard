@@ -38,23 +38,30 @@ function Details(){
 
     return(
         <>
-            {console.log(belt)}
-            <h1> soon </h1>
+        <section className="details-card">          
             <div>
                 <img src={"/img/" + belt.url_image} alt="" />
-                <img src="" alt="" />
-                <img src="" alt="" />
-                <img src="" alt="" />
+                <div className="details-childimg">
+                    <img  src={"/img/" + belt.url_image_2} alt="" />
+                    <img  src={"/img/" + belt.url_image_3} alt="" />
+                    <img  src={"/img/" + belt.url_image_4} alt="" />
+                    
+                </div>
+            </div>
+            <div className="details-descr">
+                <div className="details-name">           
+                    <p>{belt.label_1}</p> 
+                    <p>{belt.price}</p>
+                </div>
+                <div className="details-color">
+                    <div className="wrap">
+                        <p>{belt.description} </p>
+                    </div>
+                    <p>{belt.color}</p>                    
+                </div>
+                <button>Ajouter au panier ! </button>
             </div> 
-            <div>           
-                <p>{belt.label_1}</p> 
-                <p>{belt.price}</p>
-            </div>
-            <div>
-             <p>{belt.description}</p>
-             <p>{belt.color}</p>
-             <button>Ajouter au panier ! </button>
-            </div>
+        </section>  
 
             
         </>

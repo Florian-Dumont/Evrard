@@ -14,7 +14,7 @@ function Footer(){
                 <NavLink><p>Notre histoire</p></NavLink>
             </div>
             <div className="col-3">
-                <NavLink><p>Lien utiles</p></NavLink>
+                <NavLink><p>Liens utiles</p></NavLink>
                 <NavLink><p>CGV</p></NavLink>
                 <NavLink><p>Contact</p></NavLink>
             </div>

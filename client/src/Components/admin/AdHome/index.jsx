@@ -35,7 +35,7 @@ import AdStats from "./AdStats"
     return(
         <>
             <div className="admin-ctn">
-                <h1 className="admin-ttle">Pannel admin</h1>
+                <h1 className="admin-ttle">Panel admin</h1>
                 <p><Link to ="/"><FontAwesomeIcon icon={faHouse} /></Link></p>
                 <div>
                     

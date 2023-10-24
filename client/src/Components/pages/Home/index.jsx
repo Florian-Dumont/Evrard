@@ -24,7 +24,7 @@ return(
     <>
         <main>
             <section>
-           <h2 className="home-title">Nos meillieurs ventes</h2>
+           <h2 className="home-title">Nos meilleurs ventes</h2>
            <div>
             {!avgProduct ? (
                 <p>Loading..</p>

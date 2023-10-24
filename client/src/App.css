@@ -190,4 +190,72 @@ form button {
 .admin-ctn button:focus {
   background-color: gold;
   color: red;
+}
+
+.details-card {
+  display: flex;
+  margin-top: 2em;
+  margin-left: 2em;
+}
+.details-card img {
+  width: 150px;
+}
+.details-card .details-childimg {
+  display: flex;
+}
+.details-card .details-childimg img {
+  position: relative;
+  right: 0.4em;
+  width: 50px;
+  margin-right: 0.5em;
+  margin-top: -0.5em;
+}
+.details-card .details-name {
+  margin-top: 1em;
+  display: block;
+  text-align: center;
+}
+.details-card .details-descr {
+  margin: auto;
+  padding-right: 1em;
+}
+.details-card .details-color {
+  width: 100px;
+  text-align: center;
+  margin: auto;
+}
+.details-card .details-color .wrap {
+  overflow-wrap: break-word;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.details-card button {
+  margin-top: 0.5em;
+  margin-left: 0.2em;
+  height: 3em;
+  font-size: 0.7em;
+}
+
+.product-ctn {
+  width: 100%;
+  text-align: center;
+  margin-top: 1em;
+  border-top: 1px solid black;
+}
+.product-ctn h2 {
+  color: black;
+  margin-bottom: 0;
+}
+.product-ctn a {
+  text-decoration: none;
+}
+.product-ctn img {
+  width: 200px;
+  height: auto;
+  margin-bottom: 0.5em;
+}
+.product-ctn p {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-bottom: 2em;
 }/*# sourceMappingURL=App.css.map */
