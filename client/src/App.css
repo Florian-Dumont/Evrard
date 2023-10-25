@@ -192,6 +192,60 @@ form button {
   color: red;
 }
 
+.form-add {
+  margin-top: 2em;
+  display: block;
+  text-align: center;
+  justify-content: center;
+  padding: 2em;
+}
+.form-add textarea {
+  margin-top: 1em;
+  max-width: 80%;
+}
+.form-add input {
+  margin: auto;
+  text-align: center;
+  display: block;
+  margin-top: 1em;
+}
+.form-add label {
+  color: red;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  display: block;
+}
+.form-add button {
+  margin-top: 2em;
+}
+
+.form-edit {
+  margin-top: 2em;
+  display: block;
+  text-align: center;
+  justify-content: center;
+  padding: 2em;
+}
+.form-edit textarea {
+  margin-top: 1em;
+  max-width: 80%;
+}
+.form-edit input {
+  margin: auto;
+  text-align: center;
+  display: block;
+  margin-top: 1em;
+}
+.form-edit label {
+  color: red;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  display: block;
+}
+.form-edit button {
+  margin-top: 2em;
+}
+
 .details-card {
   display: flex;
   margin-top: 2em;

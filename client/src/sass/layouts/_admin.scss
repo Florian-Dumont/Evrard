@@ -21,3 +21,61 @@
     }
     
 }
+//formulaire ajout article
+.form-add{
+    margin-top: 2em;
+    display:block;
+    text-align: center;
+    justify-content: center;
+    padding:2em;
+    
+    textarea{
+        margin-top:1em;
+        max-width: 80%;
+    }
+    input{
+        margin:auto;
+        text-align: center;
+        display:block;
+        margin-top:1em        
+    }
+    label{
+        color:red;
+        margin-top:1em;
+        margin-bottom: 0.5em;        
+        display:block;
+
+    }
+    button{
+        margin-top:2em;
+    }
+}
+//fomulaire edition articles
+.form-edit{
+    margin-top: 2em;
+    display:block;
+    text-align: center;
+    justify-content: center;
+    padding:2em;
+    
+    textarea{
+        margin-top:1em;
+        max-width: 80%;
+    }
+    input{
+        margin:auto;
+        text-align: center;
+        display:block;
+        margin-top:1em        
+    }
+    label{
+        color:red;
+        margin-top:1em;
+        margin-bottom: 0.5em;        
+        display:block;
+
+    }
+    button{
+        margin-top:2em;
+    }
+}

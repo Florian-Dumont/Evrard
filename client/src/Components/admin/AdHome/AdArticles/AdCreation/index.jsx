@@ -9,7 +9,9 @@ function AdCreation(){
     const[sublabel, setSublabel] = useState("")
     const [price, setPrice]= useState("")
     const[description, setDescription] = useState("")
+
     const [catSelect, setCatselect] = useState("")
+
     const [size_select, setSizeselect] = useState("")
     const [color, setColor] = useState("")
     const [url_image, setUrlimage] = useState("")
@@ -21,33 +23,37 @@ function AdCreation(){
 
     async function handleSubmit(e){
         e.preventDefault();
+        console.log("ici" + catSelect)
 
         try{
         const res = await fetch("/api/v1/product/add", {
             method: "post",
             headers: {"Content-type" : "application/json"},
             body: JSON.stringify({label,sublabel,price,description,catSelect,size_select,color,url_image,url_image_2,url_image_3,url_image_4}),
+            
         })
         if (res.status === 200) {
             const json = await res.json();
+            
             setMsg(json.msg);
             navigate("/");
           } else {
-            
+           
           }
         } catch (error) {
-          
+            
           console.error("Erreur lors de l'envoi de la requête :", error);
         }
 
     }
+    
 
     return(
     <>   
         <h2>Création d'article</h2>
 
         <section>
-            <form onSubmit={handleSubmit}>
+            <form className="form-add" onSubmit={handleSubmit}>
                 <input type="text"
                 placeholder="Nom du produit"
                 name="label"
@@ -55,7 +61,7 @@ function AdCreation(){
                 />
 
                 <input type="text"
-                placeholder="Sous-titre du produit (optionnel)"
+                placeholder="Sous-titre du produit (optionnel) "
                 name="sublabel"
                 value = {sublabel} onChange ={(e)=> setSublabel(e.target.value)}
                 />
@@ -143,7 +149,7 @@ function AdCreation(){
                  value={url_image_4} onChange ={(e)=> setUrlimage4(e.target.value)}
                 />
 
-                <button type="submit">Crée l'article</button>
+                <button type="submit">Crée l'article</button> 
 
 
 

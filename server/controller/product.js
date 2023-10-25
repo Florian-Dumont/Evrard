@@ -29,7 +29,8 @@ const getAllProduct = async (req,res)=>{
     res.status(200).json({datas})
 }
 const addProduct = async (req, res) => {
-    let msg = "";
+    let msg = "";    
+
     const productData = {
         label_1: req.body.label,
         label_2: req.body.sublabel,
@@ -48,15 +49,16 @@ const addProduct = async (req, res) => {
 
     try {
         // Insertion dans la table product
-        const productQuery = "INSERT INTO product SET ?";
+        const productQuery = "INSERT INTO product(label_1,label_2,description,price,categories_id VALUES(?,?,?,?,?)";
+        console.log(req.body.cat_select)
         await Query.write(productQuery, productData);
 
         // Insertion dans la table details
-        const detailsQuery = "INSERT INTO details SET ?";
+        const detailsQuery = "INSERT INTO details(size,color,url_image,url_image_2,url_image_3,url_image_4) VALUES(?,?,?,?,?,?";
         await Query.write(detailsQuery, detailsData);
 
         msg = "Article créé";
-        res.status(201).json({ msg });
+        res.status(200).json({ msg });
     } catch (error) {
         console.error(error);
         msg = "Erreur lors de la création de l'article";

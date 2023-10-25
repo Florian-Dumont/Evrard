@@ -59,7 +59,8 @@ function Details(){
                     </div>
                     <p>{belt.color}</p>                    
                 </div>
-                <button>Ajouter au panier ! </button>
+                
+                 <button>Ajouter au panier ! </button> 
             </div> 
         </section>  
 

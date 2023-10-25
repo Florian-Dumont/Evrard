@@ -40,7 +40,7 @@ function AdEdit(){
         <h1>Edition de produit</h1>
 
         <section>
-            <form action="">
+            <form className="form-edit">
 
                 <label htmlFor="select_prod">Choix du produit a modifier</label>
                 <select 
@@ -56,7 +56,7 @@ function AdEdit(){
         </section>
 
         <section>
-            <form action="">
+            <form className="form-edit">
                 <input type="text"
                 placeholder="Nom du produit"
                 name="label_1"
@@ -128,7 +128,7 @@ function AdEdit(){
                 value={url_image} onChange ={(e)=> setUrlimage(e.target.value)}
                  />
 
-                 <label htmlFor="url_image_2">Photo supplémentaire(optionnel)</label>
+                 <label htmlFor="url_image_2">Photo supplémentaire (optionnel)</label>
                  <input 
                  type="file" 
                  name="url_image_2"
@@ -136,7 +136,7 @@ function AdEdit(){
                  value={url_image_2} onChange ={(e)=> setUrlimage2(e.target.value)}
                  />
 
-                <label htmlFor="url_image_3">Photo supplémentaire(optionnel)</label>
+                <label htmlFor="url_image_3">Photo supplémentaire (optionnel)</label>
                  <input 
                  type="file" 
                  name="url_image_3"
@@ -144,7 +144,7 @@ function AdEdit(){
                  value={url_image_3} onChange ={(e)=> setUrlimage3(e.target.value)}
                  />
 
-                <label htmlFor="url_image_4">Photo supplémentaire(optionnel)</label>
+                <label htmlFor="url_image_4">Photo supplémentaire (optionnel)</label>
                 <input 
                  type="file" 
                  name="url_image_4"
