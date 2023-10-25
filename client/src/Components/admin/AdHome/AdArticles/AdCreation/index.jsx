@@ -17,8 +17,28 @@ function AdCreation(){
     const [url_image_3, setUrlimage3] = useState("")
     const [url_image_4, setUrlimage4] = useState("")
 
+    const [msg, setMsg] = useState(null)
+
     async function handleSubmit(e){
         e.preventDefault();
+
+        try{
+        const res = await fetch("/api/v1/product/add", {
+            method: "post",
+            headers: {"Content-type" : "application/json"},
+            body: JSON.stringify({label,sublabel,price,description,catSelect,size_select,color,url_image,url_image_2,url_image_3,url_image_4}),
+        })
+        if (res.status === 200) {
+            const json = await res.json();
+            setMsg(json.msg);
+            navigate("/");
+          } else {
+            
+          }
+        } catch (error) {
+          
+          console.error("Erreur lors de l'envoi de la requête :", error);
+        }
 
     }
 
@@ -30,7 +50,7 @@ function AdCreation(){
             <form onSubmit={handleSubmit}>
                 <input type="text"
                 placeholder="Nom du produit"
-                name="label_1"
+                name="label"
                 value = {label} onChange ={(e) => setLabel(e.target.value)}
                 />
 
@@ -110,7 +130,7 @@ function AdCreation(){
                 <label For="url_image_3">Photo supplémentaire(optionnel)</label>
                  <input 
                  type="file" 
-                 name="url_image_2"
+                 name="url_image_3"
                  accept="image/png, image/jpeg, image/webp, image/jpg"
                  value={url_image_3} onChange ={(e)=> setUrlimage3(e.target.value)}
                  />
@@ -118,7 +138,7 @@ function AdCreation(){
                 <label For="url_image_3">Photo supplémentaire(optionnel)</label>
                 <input 
                  type="file" 
-                 name="url_image_2"
+                 name="url_image_4"
                  accept="image/png, image/jpeg, image/webp, image/jpg"
                  value={url_image_4} onChange ={(e)=> setUrlimage4(e.target.value)}
                 />

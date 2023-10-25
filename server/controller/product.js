@@ -28,24 +28,42 @@ const getAllProduct = async (req,res)=>{
     const [datas] = await Query.find(query)
     res.status(200).json({datas})
 }
-const addProduct = async (req,res)=>{
-    let msg ="";
-    const datas = { label_1 : req.body.label_1, //table product jusqua categorie_id
-                    label_2 : req.body.sublabel,
-                    description : req.body.description,
-                    price : req.body.price,
-                    categories_id :req.body.cat_select, //
-                    size : req.body.size_select, // table details jusqua la fin, les deux sont relié par la table product_details qui stock leur id
-                    color : req.body.color,
-                    url_image : req.body.url_image,
-                    url_image_2 : req.body.url_image_2,
-                    url_image_3 : req.body.url_image_3,
-                    url_image_4 : req.body.url_image_4,
-                    };
-    const query = "INSERT INTO product(label_1,label_2,description,price,categories_id) VALUES(?,?,?,?,?);  INSERT INTO details(size,color, url_image,url_image_2,url_image_3,url_image_4) VALUES(?,?,?,?,?,?)"
-    await Query.write(query, datas)
-    msg="article crée"
-    res.status(201).json({msg})
+const addProduct = async (req, res) => {
+    let msg = "";
+    const productData = {
+        label_1: req.body.label,
+        label_2: req.body.sublabel,
+        description: req.body.description,
+        price: req.body.price,
+        categories_id: req.body.cat_select,
+    };
+    const detailsData = {
+        size: req.body.size_select,
+        color: req.body.color,
+        url_image: req.body.url_image,
+        url_image_2: req.body.url_image_2,
+        url_image_3: req.body.url_image_3,
+        url_image_4: req.body.url_image_4,
+    };
 
-}
+    try {
+        // Insertion dans la table product
+        const productQuery = "INSERT INTO product SET ?";
+        await Query.write(productQuery, productData);
+
+        // Insertion dans la table details
+        const detailsQuery = "INSERT INTO details SET ?";
+        await Query.write(detailsQuery, detailsData);
+
+        msg = "Article créé";
+        res.status(201).json({ msg });
+    } catch (error) {
+        console.error(error);
+        msg = "Erreur lors de la création de l'article";
+        res.status(500).json({ msg, error: error.message });
+    }
+};
+
+
+
 export {getCategories,getAvgProduct,getProductByCategories,getByValues,getAllProduct,addProduct};
