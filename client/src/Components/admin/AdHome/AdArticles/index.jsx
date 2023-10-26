@@ -18,8 +18,8 @@ function AdArticles(){
             <h1>Gestion des articles</h1>
             <div>
                 <button onClick = {() => handleSubTabClick("Création")}>Création</button>
-                <button onClick = {() => handleSubTabClick("Edition")}>Edition</button>                
-                <button onClick = {() => handleSubTabClick("Delete")}>Supression</button>
+                <button onClick = {() => handleSubTabClick("Edition")}>Modification</button>                
+                <button onClick = {() => handleSubTabClick("Delete")}>Suppression</button>
             </div>        
             <div>{selectedSubTab === "Création" && <div><AdCreation/></div>}</div>
             <div>{selectedSubTab === "Edition" && <div><AdEdit/></div>}</div>

@@ -36,7 +36,7 @@ const addProduct = async (req, res) => {
         label_2: req.body.sublabel,
         description: req.body.description,
         price: req.body.price,
-        categories_id: req.body.cat_select,
+        catSelect: req.body.catSelect,
     };
     const detailsData = {
         size: req.body.size_select,
@@ -49,12 +49,12 @@ const addProduct = async (req, res) => {
 
     try {
         // Insertion dans la table product
-        const productQuery = "INSERT INTO product(label_1,label_2,description,price,categories_id VALUES(?,?,?,?,?)";
-        console.log(req.body.cat_select)
+        const productQuery = "INSERT INTO product(label_1,label_2,description,price,categories_id) VALUES(?,?,?,?,?)";
+        
         await Query.write(productQuery, productData);
 
         // Insertion dans la table details
-        const detailsQuery = "INSERT INTO details(size,color,url_image,url_image_2,url_image_3,url_image_4) VALUES(?,?,?,?,?,?";
+        const detailsQuery = "INSERT INTO details(size,color,url_image,url_image_2,url_image_3,url_image_4) VALUES(?,?,?,?,?,?)";
         await Query.write(detailsQuery, detailsData);
 
         msg = "Article créé";

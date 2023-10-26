@@ -66,7 +66,7 @@ function FormIn(){
                     Se connecter                    
                 </button>
                 <div>
-                <Link className='linktoup' to ={"/utilisateur/creer-un-compte"} >Pas de compte ? crée en un !</Link>
+                <Link className='linktoup' to ={"/utilisateur/creer-un-compte"} >Pas de compte ? créez en un !</Link>
                 </div>
             </form>
             

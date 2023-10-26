@@ -23,7 +23,7 @@ function AdCreation(){
 
     async function handleSubmit(e){
         e.preventDefault();
-        console.log("ici" + catSelect)
+        
 
         try{
         const res = await fetch("/api/v1/product/add", {
