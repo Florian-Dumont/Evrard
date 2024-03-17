@@ -1,9 +1,11 @@
 import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
+import AddPic from "./AddPic";
+
 
 function AdCreation(){
 
-    const navigate= useNavigate()
+    
 
     const [label, setLabel] = useState("")
     const[sublabel, setSublabel] = useState("")
@@ -14,29 +16,34 @@ function AdCreation(){
 
     const [size_select, setSizeselect] = useState("")
     const [color, setColor] = useState("")
-    const [url_image, setUrlimage] = useState("")
-    const [url_image_2, setUrlimage2] = useState("")
-    const [url_image_3, setUrlimage3] = useState("")
-    const [url_image_4, setUrlimage4] = useState("")
 
+
+    const [selectedSubTab, setSelectedSubTab] = useState("all");
+
+    const handleSubTabClick = (subTab) =>{
+        setSelectedSubTab(subTab)
+    }
+    
+
+    const [product_id, setProduct_id] = useState("");
     const [msg, setMsg] = useState(null)
 
     async function handleSubmit(e){
         e.preventDefault();
-        
 
         try{
         const res = await fetch("/api/v1/product/add", {
             method: "post",
-            headers: {"Content-type" : "application/json"},
-            body: JSON.stringify({label,sublabel,price,description,catSelect,size_select,color,url_image,url_image_2,url_image_3,url_image_4}),
+            headers:  { "Content-Type": "application/json" },
+            body: JSON.stringify({label,sublabel,price,description,catSelect,size_select,color}),
             
         })
-        if (res.status === 200) {
+        if (res.status === 201) {
             const json = await res.json();
             
+            setProduct_id(json.productId);
             setMsg(json.msg);
-            navigate("/");
+            
           } else {
            
           }
@@ -97,61 +104,27 @@ function AdCreation(){
 
                 </select>
 
-                <label For="size_select">Choix de la taille</label>
-                <select 
+                <label For="size_select">Taille du produit</label>
+                <input 
                 name="size_select" 
                 id="size_select"
-                value = {size_select} onChange = {(e) => setSizeselect(e.target.value)}
-                >
-                    <option value="">choisissez une taille</option>
-                    <option value="s">S</option>
-                    <option value="m">M</option>
-                    <option value="l">L</option>
-                    <option value="xl">XL</option>
-                </select>
+                value = {size_select} onChange = {(e) => setSizeselect(e.target.value)}>
+                    
+                </input>
 
+                <label For="color">Couleur du produit</label>
                 <input 
-                type="text" 
-                placeholder="Couleur du produit"
+                type="text"                 
                 name="color"
-                value ={color} onChange = {(e) => setColor(e.target.value)}
-                />
+                value ={color} onChange = {(e) => setColor(e.target.value)}               />
 
-                <label For="url_image">Photo principale du produit</label>
-                <input 
-                type="file"
-                name="url_image"
-                accept="image/png, image/jpeg, image/webp, image/jpg"
-                value={url_image} onChange ={(e)=> setUrlimage(e.target.value)}
-                 />
+                
 
-                 <label For="url_image_2">Photo supplémentaire(optionnel)</label>
-                 <input 
-                 type="file" 
-                 name="url_image_2"
-                 accept="image/png, image/jpeg, image/webp, image/jpg"
-                 value={url_image_2} onChange ={(e)=> setUrlimage2(e.target.value)}
-                 />
+                <button type="submit" >Créer l'article</button> 
 
-                <label For="url_image_3">Photo supplémentaire(optionnel)</label>
-                 <input 
-                 type="file" 
-                 name="url_image_3"
-                 accept="image/png, image/jpeg, image/webp, image/jpg"
-                 value={url_image_3} onChange ={(e)=> setUrlimage3(e.target.value)}
-                 />
+                {msg && <p className="msg_green">{msg}</p>}
 
-                <label For="url_image_3">Photo supplémentaire(optionnel)</label>
-                <input 
-                 type="file" 
-                 name="url_image_4"
-                 accept="image/png, image/jpeg, image/webp, image/jpg"
-                 value={url_image_4} onChange ={(e)=> setUrlimage4(e.target.value)}
-                />
-
-                <button type="submit">Crée l'article</button> 
-
-
+                
 
 
             </form>

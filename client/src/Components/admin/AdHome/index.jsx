@@ -25,7 +25,7 @@ import AdStats from "./AdStats"
                 case "inventaire":
                     return <AdInventaire/>
                 case "stats":
-                    return <AdStats/>
+                    return <AdStats/>   
                 default: 
                     return null;
             }

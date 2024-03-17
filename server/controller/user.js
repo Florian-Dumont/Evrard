@@ -93,10 +93,10 @@ const adminLog = async (req, res) =>{
         const datas = {email : req.body.email}
         const query = "SELECT name , email, password, role FROM user WHERE email = ? AND role = 3"
         const [user] = await Query.findByDatas(query, datas)
-        console.log(user)
+        
 
         if(user.length){
-            console.log("admin ok")
+            
             const matchPassword = await bcrypt.compare(req.body.password, user[0].password)
 
             if(matchPassword){

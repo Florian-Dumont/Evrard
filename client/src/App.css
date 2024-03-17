@@ -192,6 +192,16 @@ form button {
   color: red;
 }
 
+.msg_red {
+  color: red;
+  font-size: 1.2rem;
+}
+
+.msg_green {
+  color: green;
+  font-size: 1.2rem;
+}
+
 .form-add {
   margin-top: 2em;
   display: block;
@@ -244,6 +254,71 @@ form button {
 }
 .form-edit button {
   margin-top: 2em;
+}
+
+.edit-title {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5em;
+}
+
+.labelEditPanel {
+  display: block;
+  text-align: center;
+}
+
+.main-edit-tabs {
+  width: 100%;
+  margin: auto;
+  justify-content: space-evenly;
+}
+.main-edit-tabs .name-edit-tabs {
+  text-decoration: underline;
+}
+.main-edit-tabs .edit-tabs-img {
+  width: 5em;
+  margin-top: 1em;
+}
+
+.edit-pen {
+  color: green;
+  font-size: 1.5em;
+}
+
+.edit-trash {
+  color: red;
+  font-size: 1.5em;
+}
+
+.detailpanel {
+  background-color: lightgray;
+  border-radius: 1em;
+  margin: auto;
+  margin-bottom: 2em;
+  width: 75%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+}
+.detailpanel .quantity {
+  color: red;
+  display: block;
+  margin: 2em;
+  font-size: 1em;
+}
+.detailpanel a {
+  padding: 0.5em;
+}
+
+.backbutton {
+  color: black;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  margin-left: 1.5em;
+  margin-top: 1em;
+  margin-bottom: 1.5em;
+  font-size: 1.5em;
 }
 
 .details-card {
