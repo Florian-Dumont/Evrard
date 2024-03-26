@@ -41,7 +41,7 @@ function SizeUpdate() {
             ) : (sizes.map(size =>
                 <>
                     <div key={size.id} className="detailpanel">
-                        <p className="quantity">Taille : {size.label} - Couleur : {size.color} - Quantité : {size.quantity}</p>
+                        <p className="quantity">Nom du produit : {size.label_1} - Réference : {size.reference} - Taille : {size.label} - Couleur : {size.color}- Prix : {size.price} - Quantité : {size.quantity}</p>
 
                         <Link to={`/admin/true/update/size/${size.id}`} className="edit-pen"><p><FontAwesomeIcon icon={faPenToSquare} className="fontawesomeBlue" size="xs" /></p></Link>
 

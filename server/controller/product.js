@@ -9,61 +9,54 @@ const getCategories = async (req,res) =>{
 }
 
 const getAvgProduct = async (req,res)=>{
-    const query = "SELECT * from product INNER JOIN picture ON product.id = picture.product_id ORDER BY sell_amount DESC LIMIT 4  "
+    const query = "SELECT * from product JOIN details ON details.product_id = product.id INNER JOIN picture ON product.id = picture.product_id ORDER BY details.sell_amount DESC LIMIT 4  "
     const [datas] = await Query.find(query)
     res.status(200).json({datas})
 }
 
 const getProductByCategories = async (req,res)=>{
-        const query = "SELECT * from product INNER JOIN picture ON product.id = picture.product_id INNER JOIN categories ON product.categories_id = categories.id WHERE product.categories_id = categories.id "
+        const query = "SELECT DISTINCT product.id, product.label_1, details.price, product.categories_id, picture.url_image FROM product INNER JOIN picture ON product.id = picture.product_id INNER JOIN categories ON product.categories_id = categories.id JOIN details ON details.product_id = product.id WHERE product.categories_id = categories.id"
         const [datas] = await Query.find(query)
         res.status(200).json({datas})
 }
 const getByValues = async (req,res) =>{
-    const query = "SELECT * from product INNER JOIN picture  ON product.id = picture.product_id INNER JOIN details On product.id = details.product_id WHERE product.label_1 = ?"
+    const query = "SELECT * from product INNER JOIN picture ON product.id = picture.product_id INNER JOIN details On product.id = details.product_id WHERE product.label_1 = ?"
     const [datas] = await Query.findByDatas(query, req.params)
     res.status(200).json({datas})
 }
 const getAllProduct = async (req,res)=>{
-    const query = "SELECT * from product INNER JOIN details ON product.id = details.product_id INNER JOIN picture ON product.id = picture.product_id ORDER BY label_1"
+    const query = "SELECT * from product INNER JOIN details ON product.id = details.product_id INNER JOIN picture ON product.id = picture.product_id ORDER BY product.label_1"
     const [datas] = await Query.find(query)
     res.status(200).json({datas})
 }
-const addProduct = async (req, res) => {
+const addProduct = async (req, res) => { // maj avec BDD Sylvain - controler le front
     let msg = "";    
 
     const productData = {
         label_1: req.body.label,
-        reference: req.body.sublabel,
         description: req.body.description,
-        price: req.body.price,
         categories_id: req.body.catSelect,
     };
     const detailsData = {
+        size: req.body.size,
+        reference: req.body.sublabel,
         color: req.body.color,
-    };
-    const sizesData = {
-        size: req.body.size_select,
+        price: req.body.price,
+        quantity: req.body.quantity,  //ajouté
     };
 
     try {
 
-       
-
         // Insertion dans la table product
-        const productQuery = "INSERT INTO product(label_1,reference,description,price,categories_id) VALUES(?,?,?,?,?)";
+        const productQuery = "INSERT INTO product(label_1,description,categories_id) VALUES(?,?,?,?,?)";
         
         const result = await Query.write(productQuery, productData);
 
         const productId = result[0].insertId;  // récupère l'id du produit créé
 
         // Insertion dans la table details
-        const detailsQuery = "INSERT INTO details(color, product_id) VALUES(?, ?)";
-        await Query.write(detailsQuery, [detailsData.color, productId]);
-
-        //Insertion dans la table size
-        const sizeQuery = "INSERT INTO size (size, product_id) VALUES(?, ?)";
-        await Query.write(sizeQuery, [sizesData.size, productId]);
+        const detailsQuery = "INSERT INTO details(size,reference,color,price,quantity,product_id) VALUES(?,?,?,?,?)";
+        await Query.write(detailsQuery, [detailsData.size, detailsData.reference, detailsData.color, detailsData.price, detailsData.quantity, productId]);
 
         msg = "Article créé";
         res.status(201).json({ msg, productId });
@@ -128,13 +121,47 @@ const getLastProductID = async (req, res) => {
 
 const getProductById = async (req,res) => {
     try {
-        const query = "SELECT * FROM product INNER JOIN size ON product.id = product_id  WHERE product.id = ?";
+        const query = "SELECT * FROM product INNER JOIN details ON product.id = details.product_id  WHERE product.id = ?";
         const [datas] = await Query.findByDatas(query, req.params);
 
-        // console.log(req.params);
+        console.log(req.params);
 
         if(!datas.length){
-            res.status(404).json({msg: "données non reconnue"})
+            res.status(404).json({msg: "données non reconnue 122"})
+        } else {        
+            res.status(201).json(datas);
+            return;
+        }
+        } catch (error) {
+            throw Error(error);
+        } 
+};
+const getSizesByProductId = async (req,res) => { /// maj avec BDD Sylvain - controler le front
+    try {
+        const query = "SELECT  id, size, product_id, GROUP_CONCAT(color) AS colors FROM details WHERE product_id = ? GROUP BY size";
+        const [datas] = await Query.findByDatas(query, req.params);
+
+        console.log(req.params);
+
+        if(!datas.length){
+            res.status(404).json({msg: "données non reconnue sizes"})
+        } else {        
+            res.status(201).json(datas);
+            return;
+        }
+        } catch (error) {
+            throw Error(error);
+        } 
+};
+const getColorBySize = async (req,res) => { /// maj avec BDD Sylvain - controler le front
+    try {
+        const query = "SELECT color FROM details WHERE product_id = ? AND size = ?";
+        const [datas] = await Query.findByDatas(query, req.params);
+
+        console.log(req.params);
+
+        if(!datas.length){
+            res.status(404).json({msg: "données non reconnue sizes"})
         } else {        
             res.status(201).json(datas);
             return;
@@ -150,4 +177,4 @@ const getProductById = async (req,res) => {
 
 
 
-export {getCategories,getAvgProduct,getProductByCategories,getByValues,getAllProduct,addProduct,addPic,getLastProductID,getProductById,};
+export {getCategories,getAvgProduct,getProductByCategories,getByValues,getAllProduct,addProduct,addPic,getLastProductID,getProductById,getSizesByProductId,getColorBySize};

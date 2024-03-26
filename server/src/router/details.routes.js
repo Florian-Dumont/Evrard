@@ -1,11 +1,11 @@
 import { Router } from "express";
 
-import {getDetailsByProductId,getdetailsById,updateDetails} from "../../controller/details.js";
+import {getDetailsByProductId,getDetailsById,updateDetails} from "../../controller/details.js";
 
 const router = Router();
 
 router.get("/product/:product_id", getDetailsByProductId);
-router.get("/id", getdetailsById);
+router.get("/:id", getDetailsById);
 
 router.post("/update/:id",updateDetails);
 

@@ -1,15 +1,15 @@
 import Query from "../model/Query.js";
 
 
-const getDetailsByProductId = async (req,res) => {
+const getDetailsByProductId = async (req,res) => { // maj avec BDD Sylvain - controler le front
     try {
-        const query = "SELECT * FROM product WHERE product_id = ? ORDER BY label";
+        const query = "SELECT * FROM details JOIN product ON details.product_id = product.id WHERE product_id = ? ORDER BY size.label";
         const [datas] = await Query.findByDatas(query, req.params);
 
         // console.log(req.params);
 
         if(!datas.length){
-            res.status(404).json({msg: "données non reconnue"})
+            res.status(404).json({msg: "données non reconnue id "})
         } else {        
             res.status(201).json(datas);
             return;
@@ -18,7 +18,7 @@ const getDetailsByProductId = async (req,res) => {
             throw Error(error);
         } 
 };
-const getdetailsById = async (req,res) => {
+const getDetailsById = async (req,res) => {
     try {
         const query = "SELECT * FROM details WHERE id = ?";
         const [datas] = await Query.findByDatas(query, req.params);
@@ -26,7 +26,7 @@ const getdetailsById = async (req,res) => {
         // console.log(req.params);
 
         if(!datas.length){
-            res.status(404).json({msg: "données non reconnue"})
+            res.status(404).json({msg: "données non reconnue details"})
         } else {        
             res.status(201).json(datas);
             return;
@@ -36,16 +36,18 @@ const getdetailsById = async (req,res) => {
         } 
 };
 
-const updateDetails = async (req,res) => {
+const updateDetails = async (req,res) => { // maj avec BDD Sylvain - controler le front
     try {
         const datas = {
-            label: req.body.label,
-            color : req.body.color,
-            // quantity: req.body.quantity,
+            size: req.body.label,
+            reference : req.body.reference,
+            price : req.body.price,
+            color : req.body.color,            
+            quantity : req.body.quantity,            
             id: req.body.id,
                        };
         console.log(datas)
-        const query ="UPDATE size SET label = ?, color = ? WHERE id = ?";
+        const query ="UPDATE details SET size = ?, reference = ?, price = ?, color = ?, quantity = ? WHERE id = ?";
         const result = await Query.write(query, datas)
 
         res.status(200).json({msg : "update réussi"});
@@ -59,4 +61,4 @@ const updateDetails = async (req,res) => {
         throw Error(error);
     }
 }
-export {getDetailsByProductId , getdetailsById, updateDetails} ;
+export {getDetailsByProductId , getDetailsById, updateDetails} ;

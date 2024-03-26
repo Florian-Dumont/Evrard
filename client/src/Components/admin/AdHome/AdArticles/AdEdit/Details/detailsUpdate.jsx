@@ -43,9 +43,9 @@ function ProductUpdate(){
                     <p>Prix du produit : {product.price}</p>
                     </p>
                     
-                    <Link to={`/admin/true/update/details/${product.id}`} className="edit-pen"><p><FontAwesomeIcon icon={faPenToSquare} className="fontawesomeBlue" size="xs" /></p></Link>
+                    <Link to={`/admin/true/update/details/${product.product_id}`} className="edit-pen"><p><FontAwesomeIcon icon={faPenToSquare} className="fontawesomeBlue" size="xs" /></p></Link>
 
-                    <Link to={`/admin/true//delete/details/${product.id}`}className="edit-trash"><p><FontAwesomeIcon icon={faTrashCan} className="fontawesomeRed" size="xs" /></p></Link>
+                    <Link to={`/admin/true//delete/details/${product.product_id}`}className="edit-trash"><p><FontAwesomeIcon icon={faTrashCan} className="fontawesomeRed" size="xs" /></p></Link>
 
                 </div>
             </>
