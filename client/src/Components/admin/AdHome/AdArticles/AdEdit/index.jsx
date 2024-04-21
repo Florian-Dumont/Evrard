@@ -35,7 +35,7 @@ function AdEdit() {
 
             <table className="main-edit-tabs">
                 <thead className="name-edit-tabs">
-                    <tr ><th >Images</th>
+                    <tr >
                         <th>Référence</th>
                         <th>Nom du produit</th>                        
                         <th>Prix</th>
@@ -53,11 +53,11 @@ function AdEdit() {
                     ) : ( allProduct.map((product)=>
                     <>
                         <tr>
-                            <th ><img className="edit-tabs-img" src={`/img/${product.url_image}`} alt="" /></th> 
+                             
                             <th>{product.reference}</th>
                             <th>{product.label_1}</th>                            
                             <th>{product.price}</th>
-                            <th><Link to ={`/admin/true/update/${product.id}`} className="edit-pen"><FontAwesomeIcon icon={faPenToSquare} /></Link></th>
+                            <th><Link to ={`/admin/true/update/${product.product_id}`} className="edit-pen"><FontAwesomeIcon icon={faPenToSquare} /></Link></th>
                             <th><Link to =""className="edit-trash"><FontAwesomeIcon icon={faTrashCan} /></Link></th>
                         </tr>
                     

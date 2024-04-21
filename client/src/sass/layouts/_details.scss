@@ -1,18 +1,51 @@
+.detail-product-name{    
+    text-align: center;
+    font-size: 1.3em;
+    width:100%;
+    text-transform: capitalize;
+    margin:auto;
+    padding-top: 0.5em;
+}
+.details-contener{    
+    margin-left:5em;
+    justify-content: center;
+    text-align: center;
+    display:block;       
+    height:auto;
+}
 .details-card{
+    width:20%;        
     display: flex;  
-    margin-top:2em;
-    margin-left:2em;  
-    img{        
-        width:150px;
+    margin-top:0em;
+    margin-left:2em;     
+    img{
+        position:relative;
+        bottom: 3em; 
+        margin-top:auto;       
+        width:10em;
+        height:auto;
+    }
+    .details-select{
+        width:14em;
+        margin-bottom:1em;
+        font-size: 0.6em;
+        height:3em;                
+    }
+    .details-imgs{        
+        width:7em;
+        margin:auto
     }
     .details-childimg{
         display:flex;            
         img{
             position:relative;
-            right:0.4em;
-            width:50px;            
+            display:flex;
+            flex-wrap: wrap;         
+            
+            width:3em;
+            height:auto;            
             margin-right:0.5em;
-            margin-top: -0.5em;
+            margin-top: 1em;                        
         }
     }
     .details-name{
@@ -22,24 +55,40 @@
         
     }
     .details-descr{
+        width:auto;
+        font-size: 1em;
+        height:auto;
        margin:auto;
-       padding-right: 1em;
+       
        
     }
+    .details-color::-webkit-scrollbar{        
+        width:6px
+    }
+    .details-color::-webkit-scrollbar-thumb{        
+        background-color: lightgray;        
+        border-radius: 5px;
+    }
     .details-color{   
-        width:100px;                    
-        text-align: center;        
-        margin:auto;
+        width:8em;
+        height:10em;                    
+        text-align: center;
+        justify-content: center;
+        overflow:auto;
+        margin-bottom: 2em;        
+        
         .wrap{            
             overflow-wrap: break-word;
-            height:fit-content;                     
+            height:fit-content;
+            margin-bottom:2em;
+                                 
             
         }
+
     }
-    button{ 
-        margin-top: 0.5em;
+    button{       
         margin-left:0.2em;
         height:3em;      
-        font-size: 0.7em;
+        font-size: 0.6em;
     }
 }

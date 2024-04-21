@@ -1,7 +1,7 @@
 function PictureUpdate(){
     return(
     <>
-    <h1>PictureUpdate</h1>
+    <h1></h1>
     </>
     )
 }

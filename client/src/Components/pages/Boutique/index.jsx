@@ -13,7 +13,7 @@ function Boutique(){
         async function getCategories(){
             try{  
                 const categoryResult = await(
-                    await fetch("api/v1/product/categories")
+                    await fetch("/api/v1/product/categories")
                 ).json()
                 setCategories(categoryResult.datas)  
     

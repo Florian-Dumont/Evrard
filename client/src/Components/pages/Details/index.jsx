@@ -3,31 +3,31 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 
 function Details() {
-    
+
     const [belts, setBelts] = useState(null);
 
     const [sizes, setSizes] = useState([]);
     const [colors, setColors] = useState([]);
-    const [sizeChoice, setSizeChoice] = useState(""); 
-    const [colorChoice, setColorChoice] = useState(""); 
+    const [sizeChoice, setSizeChoice] = useState("");
+    const [colorChoice, setColorChoice] = useState("");
 
-   
+
     const params = useParams();
-    
+
     useEffect(() => {
-        async function getSizes(){
+        async function getSizes() {
             try {
-                const sizes = await fetch("/api/v1/product/sizes/" + params.id);
+                const sizes = await fetch("/api/v1/product/sizes/" + params.label_1);
                 if (sizes.status === 201) {
                     const json = await sizes.json();
                     setSizes(json);
                 }
 
                 /* console.log("sizes.datas", sizes.datas) */
-                
-            } catch (error) {   
+
+            } catch (error) {
                 console.log(error)
-                
+
             }
         }
         getSizes()
@@ -35,21 +35,21 @@ function Details() {
 
     // Fonction pour récupérer les couleurs disponibles pour une taille spécifique
     useEffect(() => {
-        async function getColors(){
+        async function getColors() {
             try {
                 if (!sizeChoice) {
                     // Si aucune taille sélectionnée, on vide les couleurs
                     setColors([]);
                     return;
                 }
-                const colorsResponse = await fetch(`/api/v1/product/colors/` + params.id + "/" + sizeChoice);
+                const colorsResponse = await fetch(`/api/v1/product/colors/` + params.label_1 + "/" + sizeChoice);
                 if (colorsResponse.ok) {
                     const colorsData = await colorsResponse.json();
                     setColors(colorsData);
-                    console.log("colors" , colorsData)
+                    console.log("colors", colorsData)
                 }
-                
-            } catch (error) {   
+
+            } catch (error) {
                 console.log(error)
             }
         }
@@ -66,14 +66,14 @@ function Details() {
     const handleColorChange = (e) => {
         setColorChoice(e.target.value);
     };
-    useEffect(() =>{
-        async function getBelts(){
+    useEffect(() => {
+        async function getBelts() {
             try {
-                const res = await ( 
+                const res = await (
                     await fetch("/api/v1/product/product/" + params.label_1)    // /:label/:id/:label_1
                 ).json();
                 setBelts(res.datas)
-                              
+
                 /* console.log("info du fetch => " +  res.datas) */
 
             } catch (error) {
@@ -82,7 +82,7 @@ function Details() {
         }
         getBelts()
         /* console.log("info dispo =>" + belts) */
-    },[])
+    }, [])
 
     if (!belts) {
         return <p>Loading...</p>;
@@ -92,66 +92,72 @@ function Details() {
 
     console.log("sizes " + belt)
 
-    
+
     return (
         <>
-            <section className="details-card">          
             <div>
-                <img src={"/img/" + belt.url_image} alt="" />
-                <div className="details-childimg">
-                    <img  src={"/img/" + belt.url_image_2} alt="" />
-                    <img  src={"/img/" + belt.url_image_3} alt="" />
-                    <img  src={"/img/" + belt.url_image_4} alt="" />
-                    
-                </div>
+                <p className="detail-product-name"> {belt.label_1}</p>
             </div>
-            <div className="details-descr">
-                <div className="details-name">           
-                    <p>label {belt.label_1}</p> 
-                    <p>prix {belt.price}</p>
-                </div>
-                <div className="details-color">
-                    <div className="wrap">
-                        <p>description {belt.description} </p>
+
+            <section className="details-card">
+
+                <div className="details-imgs">
+                    <img src={"/img/" + belt.url_image} alt="" />
+                    <div className="details-childimg">
+                        <img src={"/img/Placeholder.png"} alt="" />
+                        <img src={"/img/Placeholder.png"} alt="" />
+                        <img src={"/img/Placeholder.png"} alt="" />
                     </div>
-                    <p>couleur {belt.color}</p>                    
                 </div>
+                <div className="details-contener">
+                    <div className="details-descr">
+                        <div className="details-name">
 
-                
-                
-                  
-            </div> 
-        
-            <select name="size" id="size" onChange={handleSizeChange}>
-                        
-                    <option value="rien" selected disabled > Selectionner la taille </option>
-                    {!sizes ? (<></>) : (sizes.map((size) => (
-                        <option
-                            key={size.id}
-                            value={size.size}
-                        >
-                            {size.size}
-                        </option>
-                    )))}
-                        
+                            
+                        </div>
+                        <div className="details-color">
+                            <div className="wrap">
+                                <p> {belt.description} </p>
+                            </div>                            
+                            
+                        </div>
+                    </div>
+                    <div>
+
+                    </div>
+                    <select className="details-select" name="size" id="size" onChange={handleSizeChange}>
+
+                        <option value="rien" selected disabled > Selectionner la taille </option>
+                        {!sizes ? (<></>) : (sizes.map((size) => (
+                            <option
+                                key={size.id}
+                                value={size.size}
+                            >
+                                {size.size}
+                            </option>
+                        )))}
+
                     </select>
 
-            <select name="colors" id="colors" onChange={handleColorChange} value ={colorChoice}>
-                        
-                    <option value="" selected disabled > Selectionner la couleur </option>
-                    {!colors ? (<><p>pas de couleur</p></>) : (colors.map((color) => (
-                        <option
-                            key={color.id}
-                            value={color.color}
-                        >                             
-                             {color.color}
-                        </option>
-                    )))}
-                        
+                    <select className="details-select" name="colors" id="colors" onChange={handleColorChange} value={colorChoice}>
+
+                        <option value="" selected disabled > Selectionner la couleur </option>
+                        {!colors ? (<><p>pas de couleur</p></>) : (colors.map((color) => (
+                            <option
+                                key={color.id}
+                                value={color.color}
+                            >
+                                {color.color}
+                            </option>
+                            
+                        )))}
+
                     </select>
+                    <p>{belt.price} €</p>
                     <button>Ajouter au panier ! </button>
-                    </section>
-            
+                </div>
+            </section>
+
         </>
     );
 }

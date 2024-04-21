@@ -269,26 +269,32 @@ form button {
 }
 
 .main-edit-tabs {
-  width: 100%;
-  margin: auto;
+  width: 90%;
+  height: auto;
+  margin: 0.3em;
+  font-size: 0.85em;
   justify-content: space-evenly;
+}
+.main-edit-tabs th {
+  padding-left: 0.6em;
 }
 .main-edit-tabs .name-edit-tabs {
   text-decoration: underline;
 }
 .main-edit-tabs .edit-tabs-img {
-  width: 5em;
+  width: 3em;
+  height: auto;
   margin-top: 1em;
 }
 
 .edit-pen {
   color: green;
-  font-size: 1.5em;
+  font-size: 1em;
 }
 
 .edit-trash {
   color: red;
-  font-size: 1.5em;
+  font-size: 1em;
 }
 
 .detailpanel {
@@ -296,19 +302,28 @@ form button {
   border-radius: 1em;
   margin: auto;
   margin-bottom: 2em;
-  width: 75%;
+  width: auto;
   height: auto;
   display: flex;
   justify-content: center;
+  text-align: center;
+  font-size: 0.7em;
 }
-.detailpanel .quantity {
-  color: red;
+.detailpanel .productname {
   display: block;
   margin: 2em;
   font-size: 1em;
+  text-align: center;
+}
+.detailpanel p {
+  display: block;
+  margin: auto;
+  padding-right: 0.5em;
 }
 .detailpanel a {
-  padding: 0.5em;
+  margin: auto;
+  padding-right: 0.5em;
+  padding-left: 0.3em;
 }
 
 .backbutton {
@@ -321,23 +336,92 @@ form button {
   font-size: 1.5em;
 }
 
-.details-card {
+.form-title-edit {
+  justify-content: center;
+  text-align: center;
+  font-size: 1.2em;
   display: flex;
-  margin-top: 2em;
+  flex-direction: column;
+}
+
+.edit-img {
+  justify-content: center;
+  text-align: center;
+}
+.edit-img img {
+  font-size: 1em;
+  width: 20%;
+  height: auto;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.form-container .form-group {
+  margin-bottom: 1em;
+}
+.form-container label {
+  margin-bottom: 0.5em;
+}
+.form-container .input {
+  padding: 0.3em;
+  width: 80%;
+  text-align: center;
+}
+
+.detail-product-name {
+  text-align: center;
+  font-size: 1.3em;
+  width: 100%;
+  text-transform: capitalize;
+  margin: auto;
+  padding-top: 0.5em;
+}
+
+.details-contener {
+  margin-left: 5em;
+  justify-content: center;
+  text-align: center;
+  display: block;
+  height: auto;
+}
+
+.details-card {
+  width: 20%;
+  display: flex;
+  margin-top: 0em;
   margin-left: 2em;
 }
 .details-card img {
-  width: 150px;
+  position: relative;
+  bottom: 3em;
+  margin-top: auto;
+  width: 10em;
+  height: auto;
+}
+.details-card .details-select {
+  width: 14em;
+  margin-bottom: 1em;
+  font-size: 0.6em;
+  height: 3em;
+}
+.details-card .details-imgs {
+  width: 7em;
+  margin: auto;
 }
 .details-card .details-childimg {
   display: flex;
 }
 .details-card .details-childimg img {
   position: relative;
-  right: 0.4em;
-  width: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 3em;
+  height: auto;
   margin-right: 0.5em;
-  margin-top: -0.5em;
+  margin-top: 1em;
 }
 .details-card .details-name {
   margin-top: 1em;
@@ -345,24 +429,36 @@ form button {
   text-align: center;
 }
 .details-card .details-descr {
+  width: auto;
+  font-size: 1em;
+  height: auto;
   margin: auto;
-  padding-right: 1em;
+}
+.details-card .details-color::-webkit-scrollbar {
+  width: 6px;
+}
+.details-card .details-color::-webkit-scrollbar-thumb {
+  background-color: lightgray;
+  border-radius: 5px;
 }
 .details-card .details-color {
-  width: 100px;
+  width: 8em;
+  height: 10em;
   text-align: center;
-  margin: auto;
+  justify-content: center;
+  overflow: auto;
+  margin-bottom: 2em;
 }
 .details-card .details-color .wrap {
   overflow-wrap: break-word;
   height: -moz-fit-content;
   height: fit-content;
+  margin-bottom: 2em;
 }
 .details-card button {
-  margin-top: 0.5em;
   margin-left: 0.2em;
   height: 3em;
-  font-size: 0.7em;
+  font-size: 0.6em;
 }
 
 .product-ctn {

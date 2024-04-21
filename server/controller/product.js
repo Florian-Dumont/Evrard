@@ -25,7 +25,7 @@ const getByValues = async (req,res) =>{
     res.status(200).json({datas})
 }
 const getAllProduct = async (req,res)=>{
-    const query = "SELECT * from product INNER JOIN details ON product.id = details.product_id INNER JOIN picture ON product.id = picture.product_id ORDER BY product.label_1"
+    const query = "SELECT *, details.id AS detail_id from product INNER JOIN details ON product.id = details.product_id GROUP BY product.id ORDER BY product.label_1"
     const [datas] = await Query.find(query)
     res.status(200).json({datas})
 }
@@ -38,8 +38,8 @@ const addProduct = async (req, res) => { // maj avec BDD Sylvain - controler le 
         categories_id: req.body.catSelect,
     };
     const detailsData = {
-        size: req.body.size,
-        reference: req.body.sublabel,
+        size: req.body.sizeSelect,
+        reference: req.body.reference,
         color: req.body.color,
         price: req.body.price,
         quantity: req.body.quantity,  //ajouté
@@ -48,15 +48,15 @@ const addProduct = async (req, res) => { // maj avec BDD Sylvain - controler le 
     try {
 
         // Insertion dans la table product
-        const productQuery = "INSERT INTO product(label_1,description,categories_id) VALUES(?,?,?,?,?)";
+        const productQuery = "INSERT INTO product(label_1,description,categories_id) VALUES(?,?,?)";
         
         const result = await Query.write(productQuery, productData);
 
         const productId = result[0].insertId;  // récupère l'id du produit créé
 
         // Insertion dans la table details
-        const detailsQuery = "INSERT INTO details(size,reference,color,price,quantity,product_id) VALUES(?,?,?,?,?)";
-        await Query.write(detailsQuery, [detailsData.size, detailsData.reference, detailsData.color, detailsData.price, detailsData.quantity, productId]);
+        const detailsQuery = "INSERT INTO details(size,reference,color,price,product_id,quantity) VALUES(?,?,?,?,?,?)";
+        await Query.write(detailsQuery, [detailsData.size, detailsData.reference, detailsData.color, detailsData.price, productId, detailsData.quantity]);
 
         msg = "Article créé";
         res.status(201).json({ msg, productId });
@@ -85,7 +85,7 @@ const addPic = async (req, res) => {
         });
 
         console.log('files', files);
-        console.log('fields BIS', fields);
+        console.log(' ====>fields BIS', fields);
                     
         const img = {
             url_image: Object.keys(files).length ? files.image[0].newFilename : "noImg.png",
@@ -121,7 +121,7 @@ const getLastProductID = async (req, res) => {
 
 const getProductById = async (req,res) => {
     try {
-        const query = "SELECT * FROM product INNER JOIN details ON product.id = details.product_id  WHERE product.id = ?";
+        const query = "SELECT * FROM product INNER JOIN details ON product.id = details.product_id  WHERE product_id = ?";
         const [datas] = await Query.findByDatas(query, req.params);
 
         console.log(req.params);
@@ -136,9 +136,9 @@ const getProductById = async (req,res) => {
             throw Error(error);
         } 
 };
-const getSizesByProductId = async (req,res) => { /// maj avec BDD Sylvain - controler le front
+const getSizesByProductLabel = async (req,res) => { /// maj avec BDD Sylvain - controler le front
     try {
-        const query = "SELECT  id, size, product_id, GROUP_CONCAT(color) AS colors FROM details WHERE product_id = ? GROUP BY size";
+        const query = "SELECT  details.id, size, product_id, GROUP_CONCAT(color) AS colors, label_1 FROM details JOIN product ON product.id = details.product_id WHERE label_1 = ? GROUP BY size";
         const [datas] = await Query.findByDatas(query, req.params);
 
         console.log(req.params);
@@ -155,7 +155,7 @@ const getSizesByProductId = async (req,res) => { /// maj avec BDD Sylvain - cont
 };
 const getColorBySize = async (req,res) => { /// maj avec BDD Sylvain - controler le front
     try {
-        const query = "SELECT color FROM details WHERE product_id = ? AND size = ?";
+        const query = "SELECT color FROM details JOIN product ON product.id = details.product_id WHERE product.label_1 = ? AND details.size = ?";
         const [datas] = await Query.findByDatas(query, req.params);
 
         console.log(req.params);
@@ -177,4 +177,4 @@ const getColorBySize = async (req,res) => { /// maj avec BDD Sylvain - controler
 
 
 
-export {getCategories,getAvgProduct,getProductByCategories,getByValues,getAllProduct,addProduct,addPic,getLastProductID,getProductById,getSizesByProductId,getColorBySize};
+export {getCategories,getAvgProduct,getProductByCategories,getByValues,getAllProduct,addProduct,addPic,getLastProductID,getProductById,getSizesByProductLabel,getColorBySize};

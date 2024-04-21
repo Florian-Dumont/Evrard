@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 
-import SizeUpdate from './Size/sizeUpdate.jsx';
 import AdArticles from "../index.jsx";
 import PictureUpdate from "./pictureUpdate.jsx";
 import BackButton from "../../../../utils/BackButton.jsx";
@@ -40,7 +39,7 @@ function AdEditProduct() {
 
                     <section>
                         <articles>            
-                            <SizeUpdate product={product} />
+                            
                         </articles>
                             <PictureUpdate/>
                         <articles>

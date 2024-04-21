@@ -14,12 +14,13 @@ function ProductUpdate(){
     useEffect(() =>{
         async function getProduct(){
             try {
-                const datas = await fetch("/api/v1/product/"+ params.id)
-                const json = await datas.json();
+                const product = await fetch("/api/v1/product/"+ params.id)
+                const json = await product.json();
                 setProduct(json)
                 
+                
             } catch (error) {
-                throw Error(error)
+                console.log(error)
             }
         }getProduct();
     },[])
@@ -35,17 +36,18 @@ function ProductUpdate(){
         ):(product.map(product=>
             <>
                 <div key={product.id} className="detailpanel">
-                    <p className="quantity">Nom du produit : {product.label_1} - 
+                    <p className="productname">Nom: {product.label_1}</p>
 
-                    <p>Reference produit : {product.reference}</p>
-                    <p>Couleur du produit : {product.color}</p>
-                    <p>Description du produit : {product.description}</p>
-                    <p>Prix du produit : {product.price}</p>
-                    </p>
+                    <p>Reference: {product.reference}</p>
+                    <p>Couleur: {product.color}</p>
+                    <p>Description: {product.description}</p>
+                    <p>Taille: {product.size}</p>
+                    <p>Prix: {product.price} €</p>
+                   
                     
-                    <Link to={`/admin/true/update/details/${product.product_id}`} className="edit-pen"><p><FontAwesomeIcon icon={faPenToSquare} className="fontawesomeBlue" size="xs" /></p></Link>
+                    <Link to={`/admin/true/update/details/${product.id}`} className="edit-pen"><p><FontAwesomeIcon icon={faPenToSquare} className="fontawesomeBlue" size="xs" /></p></Link>
 
-                    <Link to={`/admin/true//delete/details/${product.product_id}`}className="edit-trash"><p><FontAwesomeIcon icon={faTrashCan} className="fontawesomeRed" size="xs" /></p></Link>
+                    <Link to={`/admin/true/delete/details/${product.id}`}className="edit-trash"><p><FontAwesomeIcon icon={faTrashCan} className="fontawesomeRed" size="xs" /></p></Link>
 
                 </div>
             </>

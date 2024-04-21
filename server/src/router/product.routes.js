@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getCategories,getAvgProduct,getProductByCategories,getByValues,getAllProduct,addProduct,addPic, /* getLastProductID, */getProductById , getSizesByProductId, getColorBySize} from "../../controller/product.js";
+import { getCategories,getAvgProduct,getProductByCategories,getByValues,getAllProduct,addProduct,addPic, /* getLastProductID, */getProductById , getSizesByProductLabel, getColorBySize} from "../../controller/product.js";
 
 
 const router  = Router();
@@ -11,8 +11,8 @@ router.get("/average", getAvgProduct);
 // router.get("/last-product-id", getLastProductID);
 router.get("/:id", getProductById);
 router.get("/product/:label_1", getByValues);
-router.get("/sizes/:product_id", getSizesByProductId);
-router.get("/colors/:product_id/:size", getColorBySize);
+router.get("/sizes/:label_1", getSizesByProductLabel);
+router.get("/colors/:label_1/:size", getColorBySize);
 router.get("/:label/:id", getProductByCategories);
 
 

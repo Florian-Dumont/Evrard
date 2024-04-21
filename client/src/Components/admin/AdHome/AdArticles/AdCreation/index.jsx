@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {useNavigate} from "react-router-dom";
 import AddPic from "./AddPic";
 
@@ -7,15 +7,17 @@ function AdCreation(){
 
     
 
-    const [label, setLabel] = useState("")
-    const[sublabel, setSublabel] = useState("")
-    const [price, setPrice]= useState("")
-    const[description, setDescription] = useState("")
+    const [label, setLabel] = useState("");
+    const [description, setDescription] = useState("");    
+    const [catSelect, setCatselect] = useState("");
 
-    const [catSelect, setCatselect] = useState("")
+    const [sizeSelect, setSizeSelect] = useState("");
+    const [reference, setReference] = useState("");
+    const [color, setColor] = useState("");
+    const [price, setPrice]= useState("");
+    const [quantity, setQuantity] = useState("");
 
-    const [size_select, setSizeselect] = useState("")
-    const [color, setColor] = useState("")
+    
 
 
     const [selectedSubTab, setSelectedSubTab] = useState("all");
@@ -24,9 +26,26 @@ function AdCreation(){
         setSelectedSubTab(subTab)
     }
     
-
+    const [categories, setCategories] = useState("");
     const [product_id, setProduct_id] = useState("");
     const [msg, setMsg] = useState(null)
+
+    useEffect(()=>{
+    
+        async function getCategories(){
+            try{  
+                const categoryResult = await(
+                    await fetch("/api/v1/product/categories")
+                ).json()
+                setCategories(categoryResult.datas)  
+    
+            }catch(error){
+                console.log(error)
+            }
+    
+        }
+        getCategories();
+    },[])
 
     async function handleSubmit(e){
         e.preventDefault();
@@ -35,7 +54,7 @@ function AdCreation(){
         const res = await fetch("/api/v1/product/add", {
             method: "post",
             headers:  { "Content-Type": "application/json" },
-            body: JSON.stringify({label,sublabel,price,description,catSelect,size_select,color}),
+            body: JSON.stringify({label,reference,price,description,catSelect,sizeSelect,color,quantity}),
             
         })
         if (res.status === 201) {
@@ -53,6 +72,11 @@ function AdCreation(){
         }
 
     }
+    const handleCatChange = (e) => {
+        setCatselect(e.target.value);
+    }
+
+    console.log("resultat catégories ==>" + categories)
     
 
     return(
@@ -68,10 +92,10 @@ function AdCreation(){
                 />
 
                 <input type="text"
-                placeholder="Sous-titre du produit (optionnel) "
-                name="sublabel"
-                value = {sublabel} onChange ={(e)=> setSublabel(e.target.value)}
-                />
+                placeholder="Réference du produit "
+                name="reference"
+                value = {reference} onChange ={(e)=> setReference(e.target.value)}
+                />                
 
                 <textarea
                 placeholder ="Description du produit"
@@ -87,20 +111,25 @@ function AdCreation(){
                 type="number"
                 placeholder="Prix du produit" 
                 name="price"
-                value= {price} onChange = {(e) =>setPrice(e.target.value)}
+                value= {price} onChange = {(e) =>setPrice(e.target.value.replace(/[^0-9.]/g, ''))}
                 />
-
+                
                 <label for="cat_select">Choix de la catégorie</label>
                 <select 
                 name="cat_select" 
                 id="cat_select"
-                value ={catSelect} onChange ={(e) => setCatselect(e.target.value)}
-                >
+                onChange={handleCatChange} >
+                    
                     <option value="">choisissez une catégorie</option>
-                    <option value="1">1-Ceinture</option>
-                    <option value="2">2-Porte-feuille</option>
-                    <option value="3">3-Porte-carte</option>
-                    <option value="4">4-Sacoche-en-cuir</option>
+                    {!categories ? (<><p>Erreur chargement des catégories</p></>) :
+                    (categories.map((categorie) => (
+                        <option
+                            key={categorie.id}
+                            value={categorie.id}
+                        >
+                            {categorie.label}
+                        </option>
+                    )))}
 
                 </select>
 
@@ -108,15 +137,22 @@ function AdCreation(){
                 <input 
                 name="size_select" 
                 id="size_select"
-                value = {size_select} onChange = {(e) => setSizeselect(e.target.value)}>
-                    
+                value = {sizeSelect} onChange = {(e) => setSizeSelect(e.target.value)}>                    
                 </input>
 
                 <label For="color">Couleur du produit</label>
                 <input 
                 type="text"                 
                 name="color"
-                value ={color} onChange = {(e) => setColor(e.target.value)}               />
+                value ={color} onChange = {(e) => setColor(e.target.value)}></input>
+
+                <label For="quantity">Quantité a rentré en stock (Optionnel)</label>
+                <input type="text"
+                name="quantity"
+                id="quantity"
+                value={quantity} onChange= {(e) => setQuantity(e.target.value.replace(/[^0-9]/g, ''))} />
+                
+               
 
                 
 

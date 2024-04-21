@@ -20,8 +20,8 @@ import AdminLog from "./Components/admin/AdminLog.jsx"
 import AddPic from "./Components/admin/AdHome/AdArticles/AdCreation/AddPic.jsx";
 import AdEdit from "./Components/admin/AdHome/AdArticles/AdEdit/index.jsx";
 import AdEditProduct from "./Components/admin/AdHome/AdArticles/AdEdit/AdEditProduct.jsx";
-import EditSize from "./Components/admin/AdHome/AdArticles/AdEdit/Size/EditSize.jsx";
-import EditDetails from "./Components/admin/AdHome/AdArticles/AdEdit/Details/EditDetails.jsx";
+/* import EditSize from "./Components/admin/AdHome/AdArticles/AdEdit/Size/EditSize.jsx";
+ */import EditDetails from "./Components/admin/AdHome/AdArticles/AdEdit/Details/EditDetails.jsx";
 
 
 function App() {
@@ -53,8 +53,8 @@ function App() {
         </Route>
         <Route path="admin/true/update" element={<AdEdit />} />
         <Route path="admin/true/update/:id" element={<AdEditProduct />} /> 
-        <Route path="admin/true/update/size/:id" element={<EditSize />} />
-        <Route  path = "admin/true/update/details/:id" element= {<EditDetails/>}/>
+{/*         <Route path="admin/true/update/size/:id" element={<EditSize />} />
+ */}        <Route path = "admin/true/update/details/:id" element= {<EditDetails/>}/>
       </Routes>
       <Footer />
     </>
