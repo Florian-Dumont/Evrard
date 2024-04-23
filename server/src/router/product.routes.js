@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getCategories,getAvgProduct,getProductByCategories,getByValues,getAllProduct,addProduct,addPic, /* getLastProductID, */getProductById , getSizesByProductLabel, getColorBySize} from "../../controller/product.js";
+import { getCategories,getAvgProduct,getProductByCategories,getByValues,getAllProduct,addProduct,addPic, /* getLastProductID, */getProductById , getSizesByProductLabel, getColorBySize,deleteProduct,deleteProductVariante} from "../../controller/product.js";
 
 
 const router  = Router();
@@ -19,6 +19,8 @@ router.get("/:label/:id", getProductByCategories);
 router.post("/add", addProduct);
 router.post("/addPic", addPic);
 
+router.delete("/delete_product/:id", deleteProduct);
+router.delete("/delete_variante/:details_id", deleteProductVariante);
 
 
 export default router;

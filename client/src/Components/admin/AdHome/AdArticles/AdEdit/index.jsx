@@ -25,19 +25,33 @@ function AdEdit() {
         }
         getAllProduct();
 
-    }, [])
+    }, [allProduct])
+
+    const handleDelete = (productId) => {
+        const confirmed = window.confirm("Êtes-vous sûr de vouloir supprimer ce produit ? Si vous souhaitez supprimer une variante, veuilliez vous rendre dans la page de modification de ce produit principale");
+        if (confirmed) {
+            fetch("/api/v1/product/delete_product/" + productId, {
+                method: "DELETE",
+                headers: {
+                    'Content-Type': 'application/json',
+                  },
+                body: JSON.stringify({ productId }),
+            });
+          window.location.href = `/admin/true/update`;
+        }
+      };
 
 
     return (
         <>
-            <BackButton/>
+            <BackButton />
             <h1 className="edit-title">Edition de produit</h1>
 
             <table className="main-edit-tabs">
                 <thead className="name-edit-tabs">
                     <tr >
                         <th>Référence</th>
-                        <th>Nom du produit</th>                        
+                        <th>Nom du produit</th>
                         <th>Prix</th>
                         <th>Modifier</th>
                         <th>Supprimer</th>
@@ -50,27 +64,31 @@ function AdEdit() {
                             <th>Aucun produit trouvé</th>
                         </tr>
                     </>
-                    ) : ( allProduct.map((product)=>
-                    <>
-                        <tr>
-                             
-                            <th>{product.reference}</th>
-                            <th>{product.label_1}</th>                            
-                            <th>{product.price}</th>
-                            <th><Link to ={`/admin/true/update/${product.product_id}`} className="edit-pen"><FontAwesomeIcon icon={faPenToSquare} /></Link></th>
-                            <th><Link to =""className="edit-trash"><FontAwesomeIcon icon={faTrashCan} /></Link></th>
-                        </tr>
-                    
-                        
+                    ) : (allProduct.map((product) =>
+                        <>
+                            <tr>
 
-                    </>
+                                <th>{product.reference}</th>
+                                <th>{product.label_1}</th>
+                                <th>{product.price}</th>
+                                <th><Link to={`/admin/true/update/${product.product_id}`} className="edit-pen"><FontAwesomeIcon icon={faPenToSquare} /></Link></th>
+                                <th>
+                                    <button onClick={() => handleDelete(product.product_id)} className="edit-trash">
+                                        <FontAwesomeIcon icon={faTrashCan} />
+                                    </button>
+                                </th>
+                            </tr>
+
+
+
+                        </>
                     ))}
 
 
                 </tbody>
 
 
-                
+
 
 
             </table>

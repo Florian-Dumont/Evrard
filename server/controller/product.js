@@ -171,10 +171,43 @@ const getColorBySize = async (req,res) => { /// maj avec BDD Sylvain - controler
         } 
 };
 
+const deleteProduct = async (req,res) => {
+
+    const data = {
+        id : req.body.productId,
+    }
+
+    try {
+        const query ="DELETE FROM product WHERE id = ? ";
+        await Query.deleteByValue(query, data);
+                
+        res.status(201).json({});
+
+     } catch (error) {
+        throw Error(error);
+    }
+}
+const deleteProductVariante = async (req,res) => {
+
+    const data = {
+        id : req.body.detailsId,
+    }
+
+    try {
+        const query ="DELETE FROM details WHERE id = ? ";
+        await Query.deleteByValue(query, data);
+                
+        res.status(201).json({});
+
+     } catch (error) {
+        throw Error(error);
+    }
+}
+
 
 /* "SELECT *, products.id AS product_id, MIN(pictures.id) AS first_picture_id FROM products JOIN pictures ON pictures.product_id = products.id JOIN sizes ON sizes.product_id = products.id WHERE products.title_url = ? AND products.id = ? GROUP BY products.id ORDER BY products.id ASC;" */
 
 
 
 
-export {getCategories,getAvgProduct,getProductByCategories,getByValues,getAllProduct,addProduct,addPic,getLastProductID,getProductById,getSizesByProductLabel,getColorBySize};
+export {getCategories,getAvgProduct,getProductByCategories,getByValues,getAllProduct,addProduct,addPic,getLastProductID,getProductById,getSizesByProductLabel,getColorBySize,deleteProduct,deleteProductVariante};
