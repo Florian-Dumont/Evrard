@@ -51,7 +51,7 @@ function AddPic (/* { productId } */) {
         } catch (error) {
             console.error('Erreur lors de l\'upload :',  error.message );
         }
-    }
+    };
 
     return (
         <>

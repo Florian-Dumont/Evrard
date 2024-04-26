@@ -1,0 +1,23 @@
+<section>
+
+    <table>
+        <thead>
+            <tr>
+                <th>alias</th>
+                <th>email</th>
+                <th>date de création</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(const data of datas ){ %>
+                <tr>
+                    <td><%= data.alias %></td>
+                    <td><%= data.email %></td>
+                    <td><%= data.creation_date.toLocaleString() %></td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+
+
+</section>

@@ -128,6 +128,29 @@ const addPic = async (req, res) => {
         res.status(500).json({ error: "Erreur lors de l'upload de l'image." });
     }
 };
+const addVariante = async (req,res)=>{
+    try {
+        
+        const datas = {
+            size : req.body.size,
+            reference : req.body.reference, 
+            color : req.body.color,
+            price : req.body.price,
+            product_id : req.body.product_id,
+            quantity : req.body.quantity,
+        }
+
+        console.log("datas addVariante ------------------ ", datas)
+        
+        const query = "INSERT INTO details (size,reference,color,price,product_id,quantity) VALUES (?,?,?,?,?,?)";
+        await Query.write(query,datas)
+        res.status(201).json({msg :"Variante bien ajoutée."})
+        
+    } catch (error) {
+        throw Error(error);
+    }
+};
+
 
 const getImagesBydetailsId = async (req, res) => {
     try {
@@ -139,4 +162,4 @@ const getImagesBydetailsId = async (req, res) => {
     } 
 }
 
-export {getDetailsByProductId , getDetailsById, updateDetails, addPic, getImagesBydetailsId} ;
+export {getDetailsByProductId , getDetailsById, updateDetails, addPic, getImagesBydetailsId,addVariante} ;

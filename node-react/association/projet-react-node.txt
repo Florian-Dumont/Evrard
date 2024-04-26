@@ -1,0 +1,11 @@
+1ER PROJET NODE-REACT 		|
+							|	
+____________________________| 
+
+
+preview des tables
+
+=>user(id, pseudo, email, password, role)
+=>articles(création - admin) - (id, label, subtitle, content, date, author(admin)) 
+=>commentaires(id, user_id, articles_id, content, date)
+=>images(id, articles_id, user_id, url)

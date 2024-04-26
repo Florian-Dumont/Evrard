@@ -1,0 +1,16 @@
+<main>
+    <h1>homme sweet home</h1>
+
+
+    <% for ( const data of datas) {%>
+
+    <article>
+        <h2><% data.label %></h2>
+        <p><% data.content %></p>
+        <time><% data.date.toLocaleString() %></time>
+        <p><% data.author%></p>             
+</article>
+
+<% } %>
+
+</main>

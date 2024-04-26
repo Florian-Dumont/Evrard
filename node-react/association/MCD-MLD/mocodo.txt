@@ -1,0 +1,48 @@
+MCD=>
+
+:
+:
+category: id, label
+:
+
+possede, 1N user, 0N role
+role: id, label
+avoir1, 1N story, 0N category
+image: id, url
+
+user: id, alias, email, password
+commenter, 0N user, 0N story : date, comment
+story: id, label, content, date, author
+avoir2, 1N story, 11 image
+
+:
+
+
+-----------------------------------------------------------------------------------------
+MLD=>
+
+%%mocodo
+:::::
+category: id, label
+:::
+
+
+:
+possede: #id->user->id, _#id.1->role->id
+:
+role: id, label
+:
+avoir1: #id->story->id, _#id.1->category->id
+:
+image: id, url, #id.1->story->id
+:
+
+
+:
+user: id, alias, email, password
+:
+commenter: #id->user->id, _#id.1->story->id, date, comment
+:
+story: id, label, content, date, author
+:::
+

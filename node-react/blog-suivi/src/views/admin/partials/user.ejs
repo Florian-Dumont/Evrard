@@ -1,0 +1,25 @@
+<section>
+
+    <table>
+        <thead>
+            <tr>
+                <th>alias</th>
+                <th>email</th>
+                <th>date de création</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(const data of datas ){ %>
+                <tr>
+                    <td><%= data.alias %></td>
+                    <td><%= data.email %></td>
+                    <td><%= data.creation_date.toLocaleString() %></td>
+                    <td><i class="fa-solid fa-trash" data-id = <%= data.id %> ></i></td>
+
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+
+    
+</section>

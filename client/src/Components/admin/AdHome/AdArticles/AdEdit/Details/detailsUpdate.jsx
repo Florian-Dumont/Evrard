@@ -5,10 +5,11 @@ import { useParams , Link } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare , faTrashCan, faBullseye } from "@fortawesome/free-solid-svg-icons";
+import AddVarianteDetails from "./addVariantDetails";
 
 function ProductUpdate(){
 
-    const [product,setProduct] = useState([])
+    const [product,setProduct] = useState([]);
     const params = useParams();
 
     useEffect(() =>{
@@ -53,8 +54,14 @@ function ProductUpdate(){
       };
 
 
+
+
     return(
         <>
+            <AddVarianteDetails />
+
+
+
         <h1 className="labelEditPanel">Information du produit</h1>
 
         {!product ? (

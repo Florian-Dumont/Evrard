@@ -1,0 +1,24 @@
+nav a {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 7px;
+    margin: 7px;
+    border: 1px solid red;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    margin: 50px auto;
+}
+
+input,
+textarea {
+    padding: 5px;
+    margin-bottom: 10px;
+}
