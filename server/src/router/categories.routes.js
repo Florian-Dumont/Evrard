@@ -1,11 +1,13 @@
 import { Router } from "express";
-import { addCategories,deleteCategories } from "../../controller/categories.js";
+import { getCategorieById, addCategories, updateCategorie , deleteCategories } from "../../controller/categories.js";
 
 
 const router  = Router();
 
 router.post("/add", addCategories);
+router.post("/update/:id", updateCategorie);
 
+router.get("/:id", getCategorieById);
 
 router.delete("/delete/:id", deleteCategories)
 

@@ -17,10 +17,11 @@ function Signout(){
     dispatch(signout({name}))
 
     function back(){
-        localStorage.removeItem("auth")
+        localStorage.removeItem("auth");
+        localStorage.removeItem("myuserid");
         setTimeout(()=>{
             navigate("/")
-        },5000)
+        },2000)
         
     }
     back();

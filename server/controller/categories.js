@@ -2,6 +2,70 @@ import formidable from "formidable";
 import Query from "../model/Query.js";
 
 
+const getCategorieById = async (req, res) => {
+    try {
+
+        const query = "SELECT * FROM categories WHERE id = ?";
+        const [datas] = await Query.findByDatas(query, req.params);
+        res.status(200).json({datas})
+
+    } catch (error) {
+        throw Error(error)
+    }
+
+};
+const updateCategorie = async (req, res) => {
+
+    const form = formidable({
+        uploadDir: "public/img",
+        keepExtensions: true,
+        allowEmptyFiles: false,
+    });
+
+    try {
+        const { fields, files } = await new Promise((resolve, reject) => {
+            form.parse(req, (error, fields, files) => {
+                if (error) {
+                    reject(error);
+                } else {
+                    resolve({ fields, files });
+                }
+            });
+        });
+
+        const imgInputFull = Object.keys(files).length;
+
+        if (!imgInputFull) {
+            const datas = {
+                label : fields.label,
+                description : fields.description,
+                url_cat_image: fields.url_cat_image,
+                id : fields.id,
+            }        
+
+            const query = "UPDATE categories SET label = ?, description = ?, url_cat_image = ? WHERE id = ?";
+            const [result] = await Query.write(query, [datas.label, datas.description, datas.url_cat_image,  datas.id]);
+            res.status(201).json({msg : "update réussi", result});
+
+        } else {
+            const datas = {
+                label : fields.label,
+                description : fields.description,
+                url_cat_image: imgInputFull ? files.image[0].newFilename : "Placeholder.png",
+                id : fields.id,
+            }
+        
+            const query = "UPDATE categories SET label = ?, description = ?, url_cat_image = ? WHERE id = ?";
+            const [result]  = await Query.write(query, [datas.label, datas.description, datas.url_cat_image,  datas.id]);
+            res.status(201).json({msg : "update réussi", result});
+        }
+
+    } catch (error) {
+        throw Error(error)
+    }
+
+};
+
 const addCategories = async (req, res) => {
     const form = formidable({
         uploadDir: "public/img",
@@ -62,4 +126,4 @@ const deleteCategories = async (req,res) => {
 
 
 
-export { addCategories,deleteCategories };
+export { getCategorieById, addCategories, updateCategorie, deleteCategories };

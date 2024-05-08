@@ -30,7 +30,8 @@ function FormIn(){
         setMsg(json.msg);
         if(res.status === 200){
             localStorage.setItem("auth",json.TOKEN)
-            dispatch(signin({name}))
+            localStorage.setItem("myuserid", email);
+            dispatch(signin({email}))
             navigate("/");
         }
         if(res.status === 201){

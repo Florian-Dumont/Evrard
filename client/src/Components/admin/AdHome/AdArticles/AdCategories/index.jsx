@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { faPenToSquare, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
 
 function AdCategories() {
@@ -65,6 +65,7 @@ function AdCategories() {
 
 
 
+
     return (
         <>
             <h2>Crée une catégorie d'articles</h2>
@@ -91,7 +92,9 @@ function AdCategories() {
 
                     <p>{categorie.label}
                     {categorie.id}
-                        <button onClick ={()=>handleDelete(categorie.id)}><FontAwesomeIcon icon={faTrashCan} /></button> 
+                        <button><Link to ={`/admin/true/update/categorie/${categorie.id}`} className ="edit-pen"><FontAwesomeIcon icon={faPenToSquare} /></Link></button>
+                        
+                        <button onClick ={()=>handleDelete(categorie.id)}className="edit-trash"><FontAwesomeIcon icon={faTrashCan} /></button> 
                     </p>
                 </>
             ))}

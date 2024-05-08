@@ -18,6 +18,15 @@ const check_token = async (req,res) => {
         throw Error(error)
     }
 }
+const getUserByEmail = async (req,res) =>{
+    try {
+        const query = "SELECT * FROM user WHERE email = ?"
+        const [user] = await Query.findByValue(query, req.params.email);
+        res.status(200).json({msg : "Utilisateur verifier", id: query.email, user})
+    } catch (error) {
+        throw Error(error)
+    }
+}
 
 const signin = async (req,res) => {
     try {
@@ -121,4 +130,4 @@ const adminLog = async (req, res) =>{
 }
 
 
-export {check_token,signin,createAccount,adminLog}
+export {check_token,signin,createAccount,adminLog,getUserByEmail}

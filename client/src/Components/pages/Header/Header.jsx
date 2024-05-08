@@ -1,6 +1,6 @@
 import {NavLink, Link} from "react-router-dom";
 import {useSelector} from "react-redux";
-import {useState} from "react";
+import {useState, useEffect } from "react";
 import { FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faBars} from "@fortawesome/free-solid-svg-icons";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons"
@@ -11,8 +11,61 @@ function Header(){
     const[isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
 
-    const {info} = useSelector((state) =>state.user)
-    console.log(info)
+    // const {info} = useSelector((state) =>state.user)
+    
+    const [user, setUser] = useState(null);
+    const myuserid = localStorage.getItem("myuserid");
+    console.log("userId",myuserid)
+
+    useEffect(() => {
+        async function getUserHeader() {
+            try {
+                let email = "";
+                if (!myuserid) {
+                    return
+                } else {
+                    email = myuserid;
+                }
+
+                // const TOKEN = getItemWithExpiration('auth');
+                const users = await fetch("/api/v1/user/" + email, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        // 'Authentication': `Bearer ${TOKEN}`
+                    }
+                });
+
+                if (users.status === 200) {
+                    const json = await users.json();
+                    setUser(json.user);
+                }
+            } catch (error) {
+                throw Error(error);
+            }
+        }
+        getUserHeader();
+    }, []);
+
+    
+    const { cartInfo } = useSelector((state) => state.cart); // reducer du panier
+
+    function computeCart() {
+        {/* Affiche le nombre de produit dans le panier  au niveau du pictogramme*/ }
+        let sum = 0;
+        if (!cartInfo) { // sert à réinitialiser l'affichage du panier vide lors du localStorage.removeItem("cart")
+            return sum = 0;
+        } else {
+            for (const item of cartInfo.product) {
+                sum += item.quantity;
+            }
+            return sum;
+        }
+    }
+
+
+    
+    console.log("user ------->",user)
 
     return(
         <>
@@ -27,19 +80,19 @@ function Header(){
                 </div>
                 <div>
                 
-                {!info.isLogged ?(
+                {!user ?(
                     
                     <NavLink to ={"/utilisateur/connexion"} className="logbtn"> Se connecter</NavLink>
                 ):(
                     <>                    
                         <NavLink to={"utilisateur/deconnexion"} className="logbtn">Déconnexion</NavLink>
-                        <p className="logname">{info.id}</p>
+                        <p className="logname">{user[0].name}</p>
                     </>
                 )}   
                 </div>
                 <div className="cart-btn">
                     <Link to=""><FontAwesomeIcon icon={faCartShopping} /></Link>
-                    <p>0 articles</p>
+                    <p>{cartInfo.product.length ? computeCart() : "0"} articles</p>
                 </div>
                 
                 
@@ -57,7 +110,6 @@ function Header(){
                     </nav>
                 )}
             
-
         </>
     )
 }

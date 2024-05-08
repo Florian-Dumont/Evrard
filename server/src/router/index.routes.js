@@ -1,7 +1,7 @@
 import { Router } from "express";
 import home_routes from "./admin.routes.js";
 import product_routes from "./product.routes.js";
-import user_routes from"./user_routes.js";
+import user_routes from"./user.routes.js";
 import color_routes from "./color.routes.js";
 import details_routes from "./details.routes.js";
 import categories_routes from "./categories.routes.js"
