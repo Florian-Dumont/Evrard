@@ -2,6 +2,7 @@ import Header from "./Components/pages/Header/Header";
 import Footer from "./Components/pages/Footer/Footer";
 import { Routes, Route } from "react-router-dom";
 import Home from "./Components/pages/Home/index";
+import Cart from "./Components/pages/Cart/index";
 import Boutique from "./Components/pages/Boutique/index";
 import About from "./Components/pages/Histoire";
 import Manufacturing from "./Components/pages/Fabrication";
@@ -31,6 +32,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<HOC child={Home} />} />
+        <Route path="/panier" element={<HOC child={Cart} />} />
         <Route path="/boutique" element={<HOC child={Boutique} />} />
         <Route path="/boutique/:label/:id" element={<HOC child={ProductByCategories} />} />
         <Route path="/Histoire" element={<HOC child={About} />} />

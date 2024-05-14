@@ -85,7 +85,7 @@ function EditDetails() {
 
         <>
             <BackButton />
-            <h1 className="form-title-edit">Modification des information du produit : {label}</h1>
+            <h1 className="form-title-edit">Modification des information du produit : {label} - EditDetails</h1>
 
             <form className="form-container" onSubmit={handleSubmitDetails}>
 

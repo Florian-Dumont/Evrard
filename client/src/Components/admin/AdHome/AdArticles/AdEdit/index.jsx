@@ -45,7 +45,7 @@ function AdEdit() {
     return (
         <>
             <BackButton />
-            <h1 className="edit-title">Edition de produit</h1>
+            <h1 className="edit-title">Edition de produit : index de AdEdit</h1>
 
             <table className="main-edit-tabs">
                 <thead className="name-edit-tabs">

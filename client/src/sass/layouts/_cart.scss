@@ -1,0 +1,34 @@
+.cart-table {
+    width: 90%;
+    height:auto;
+    margin: 0.3em;
+    font-size: 0.85em;
+    justify-content: space-evenly;
+
+    .cart-head {
+        th{           
+            padding-bottom: 20px;
+        }
+    }
+
+    th, td {
+        padding-left: 0.6em;
+        text-align: center;
+
+    }
+    .modify-quantity {
+        display: flex;
+        justify-content: space-around;
+        button {
+            font-size: 15px;
+            background-color: rgba(0,0,0,0);
+            text-decoration: none;
+            border: none;           
+        }
+    }         
+    .cart-img {
+        width: 50px;
+        margin: auto;
+    }    
+
+}

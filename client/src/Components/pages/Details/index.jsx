@@ -32,6 +32,7 @@ function Details() {
     useEffect(() => {
         async function getSizes() {
             try {
+                
                 const sizes = await fetch("/api/v1/product/sizes/" + params.label_1);
                 if (sizes.status === 201) {
                     const json = await sizes.json();
@@ -89,23 +90,23 @@ function Details() {
                 ).json();
                 setProducts(res.datas)
 
-                /* console.log("info du fetch => " +  res.datas) */
+                  
 
             } catch (error) {
                 console.log(error)
             }
         }
         getProduct()
-        /* console.log("info dispo =>" + belts) */
+          
     }, [])
 
     if (!products) {
         return <p>Loading...</p>;
     }
-
+    
     const product = products[0];
 
-    /* console.log("sizes " + product); */
+     console.log("sizes " + product); 
 
     function handleAddToCart(e) {
         e.preventDefault();

@@ -62,7 +62,7 @@ function ProductUpdate(){
 
 
 
-        <h1 className="labelEditPanel">Information du produit</h1>
+        <h1 className="labelEditPanel">Information du produit : detailsUpdate</h1>
 
         {!product ? (
             <>
@@ -72,6 +72,8 @@ function ProductUpdate(){
             <>
                 <div key={prod.id} className="detailpanel">
                     <p className="productname">Nom: {prod.label_1}</p>
+                    <p className="productname">product_id: {prod.product_id}</p>
+                    <p className="productname">detailIdentifiant: {prod.detailIdentifiant}</p>
 
                     <p>Reference: {prod.reference}</p>
                     <p>Couleur: {prod.color}</p>
@@ -80,7 +82,7 @@ function ProductUpdate(){
                     <p>Prix: {prod.price} €</p>
                    
                     
-                    <Link to={`/admin/true/update/details/${prod.id}`} className="edit-pen"><p><FontAwesomeIcon icon={faPenToSquare} className="fontawesomeBlue" size="xs" /></p></Link>
+                    <Link to={`/admin/true/update/details/${prod.detailIdentifiant}`} className="edit-pen"><p><FontAwesomeIcon icon={faPenToSquare} className="fontawesomeBlue" size="xs" /></p></Link>
 
                     {product.length >= 2 ? (
                     <>

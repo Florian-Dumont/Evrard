@@ -121,7 +121,25 @@ const getLastProductID = async (req, res) => {
 
 const getProductById = async (req,res) => {
     try {
-        const query = "SELECT * FROM product INNER JOIN details ON product.id = details.product_id  WHERE product_id = ?";
+        const query = "SELECT *, details.id AS detailIdentifiant FROM product INNER JOIN details ON product.id = details.product_id JOIN picture ON product.id = picture.product_id WHERE picture.product_id = ?";
+        const [datas] = await Query.findByDatas(query, req.params);
+
+        console.log(req.params);
+
+        if(!datas.length){
+            res.status(404).json({msg: "données non reconnue 122"})
+        } else {        
+            res.status(201).json(datas);
+            return;
+        }
+        } catch (error) {
+            throw Error(error);
+        } 
+};
+
+const getProductByIdVariante = async (req,res) => {
+    try {
+        const query = "SELECT * FROM product INNER JOIN details ON product.id = details.product_id JOIN picture ON product.id = picture.product_id WHERE picture.detail_id = ?";
         const [datas] = await Query.findByDatas(query, req.params);
 
         console.log(req.params);
@@ -210,4 +228,4 @@ const deleteProductVariante = async (req,res) => {
 
 
 
-export {getCategories,getAvgProduct,getProductByCategories,getByValues,getAllProduct,addProduct,addPic,getLastProductID,getProductById,getSizesByProductLabel,getColorBySize,deleteProduct,deleteProductVariante};
+export {getCategories,getAvgProduct,getProductByCategories,getByValues,getAllProduct,addProduct,addPic,getLastProductID,getProductById,getSizesByProductLabel,getColorBySize,deleteProduct,deleteProductVariante,getProductByIdVariante};

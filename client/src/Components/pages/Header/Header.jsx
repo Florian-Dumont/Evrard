@@ -4,12 +4,16 @@ import {useState, useEffect } from "react";
 import { FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faBars} from "@fortawesome/free-solid-svg-icons";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons"
+import { addToCart } from "../../../store/slices/cart";
+
  
 
 function Header(){
 
     const[isOpen, setIsOpen] = useState(false);
+    const[isCartOpen, setIsCartOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
+    const cartToggle = () => setIsCartOpen(!isCartOpen)
 
     // const {info} = useSelector((state) =>state.user)
     
@@ -90,8 +94,8 @@ function Header(){
                     </>
                 )}   
                 </div>
-                <div className="cart-btn">
-                    <Link to=""><FontAwesomeIcon icon={faCartShopping} /></Link>
+                <div className="cart-btn" onClick={cartToggle}>
+                    <div ><FontAwesomeIcon icon={faCartShopping} /></div>
                     <p>{cartInfo.product.length ? computeCart() : "0"} articles</p>
                 </div>
                 
@@ -108,6 +112,11 @@ function Header(){
                         <NavLink to = {"/histoire"}> Notre Histoire |</NavLink>
                         <NavLink to = {"/fabrication"}> La fabrication</NavLink>
                     </nav>
+                )}
+                {isCartOpen && (
+                    <div>
+                        <h1>test</h1>
+                    </div>
                 )}
             
         </>

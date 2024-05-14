@@ -16,7 +16,7 @@ function AdEditProduct() {
         async function getProduct() {
             try {
 
-                const datas = await fetch('/api/v1/product/' + params.id);
+                const datas = await fetch('/api/v1/product/variante' + params.id);
                 const json = await datas.json();
                 setProduct(json);                
 
@@ -35,7 +35,7 @@ function AdEditProduct() {
 
                 <>
                     <BackButton/>
-                    <h2 className="labelEditPanel">{product[0].label_1}</h2>
+                    {/* <h2 className="labelEditPanel">{product[0].label_1}</h2> */}
 
                     <section>
                         <articles>            
